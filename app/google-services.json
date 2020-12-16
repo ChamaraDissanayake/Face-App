@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "832837231696",
+    "firebase_url": "https://native-login-page.firebaseio.com",
+    "project_id": "native-login-page",
+    "storage_bucket": "native-login-page.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832837231696:android:03120ed5e529e4b731dd55",
+        "android_client_info": {
+          "package_name": "com.example.nativeloginpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832837231696-8b94u27sutokq40on74t46fu6eptu0rb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nativeloginpage",
+            "certificate_hash": "9118aba5373181b869830c4647508767c2740abe"
+          }
+        },
+        {
+          "client_id": "832837231696-ln39l436ntgeid9clb7imbbn9k6qk19j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGcHCPH1Jr1FdosohorX5ZwM1InAgoZgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832837231696-ln39l436ntgeid9clb7imbbn9k6qk19j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

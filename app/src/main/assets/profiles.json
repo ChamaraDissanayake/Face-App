@@ -1,0 +1,193 @@
+[
+    {
+        "id": 1,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg",
+        "name": "Emma",
+        "age": 20,
+        "location": "New York",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg"},
+            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg"},
+            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg"},
+            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg"}
+        ]
+    },
+    {
+        "id": 2,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image2.jpg",
+        "name": "Zoya",
+        "age": 23,
+        "location": "Atlantic City",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 3,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image3.jpg",
+        "name": "Roma",
+        "age": 22,
+        "location": "California",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+
+    {
+        "id": 4,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image4.jpg",
+        "name": "Carol",
+        "age": 19,
+        "location": "New City",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 5,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image5.jpg",
+        "name": "Saansa",
+        "age": 20,
+        "location": "Manhattan",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 6,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image6.jpg",
+        "name": "Khaleesi",
+        "age": 24,
+        "location": "Future Westros",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 7,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image7.jpg",
+        "name": "Heena",
+        "age": 21,
+        "location": "India",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 8,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image8.jpg",
+        "name": "Jasmin",
+        "age": 23,
+        "location": "Taxes",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 9,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image9.jpg",
+        "name": "Monica",
+        "age": 23,
+        "location": "New York",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+          {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 10,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image10.jpg",
+        "name": "Phoebe",
+        "age": 22,
+        "location": "New York City",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+           {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 11,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image11.jpg",
+        "name": "Rachel",
+        "age": 22,
+        "location": "Central Perk",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 12,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image12.jpg",
+        "name": "Jainis",
+        "age": 24,
+        "location": "New York",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 13,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image13.jpg",
+        "name": "Samia",
+        "age": 19,
+        "location": "India",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 14,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image14.jpg",
+        "name": "Hornol",
+        "age": 24,
+        "location": "Caltech",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 15,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image15.jpg",
+        "name": "Korial",
+        "age": 21,
+        "location": "Japan",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 16,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image16.jpg",
+        "name": "Chin Si",
+        "age": 23,
+        "location": "China",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    },
+    {
+        "id": 17,
+        "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image17.jpg",
+        "name": "SDF",
+        "age": 21,
+        "location": "America",
+        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "photos":[
+            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
+        ]
+    }
+]

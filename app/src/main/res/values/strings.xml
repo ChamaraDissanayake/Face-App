@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Face App</string>
+    <string name="facebook_app_id">2475329672762343</string>
+    <string name="fb_login_protocol_scheme">fb2475329672762343</string>
+    <string name="hello_world">hello_world</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="tab_text_4">Tab 4</string>
+    <string name="photo_tip">Photo tip: make waves with a beach photo and get more likes</string>
+</resources>
