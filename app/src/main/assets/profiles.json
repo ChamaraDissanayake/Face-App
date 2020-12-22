@@ -5,7 +5,10 @@
         "name": "Emma",
         "age": 20,
         "location": "New York",
+        "university":"University of Wales",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Grab a Drink"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Foodie"},{"id":"Writer"}],
         "photos":[
             {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg"},
             {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg"},
@@ -19,7 +22,10 @@
         "name": "Zoya",
         "age": 23,
         "location": "Atlantic City",
+        "university":"University of Colombo",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -30,7 +36,10 @@
         "name": "Roma",
         "age": 22,
         "location": "California",
+        "university":"University of Ruhuna",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -42,7 +51,10 @@
         "name": "Carol",
         "age": 19,
         "location": "New City",
+        "university":"University of New City",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -53,7 +65,10 @@
         "name": "Saansa",
         "age": 20,
         "location": "Manhattan",
+        "university":"University of Manhattan",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -64,7 +79,10 @@
         "name": "Khaleesi",
         "age": 24,
         "location": "Future Westros",
+        "university":"University of Westros",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -75,7 +93,10 @@
         "name": "Heena",
         "age": 21,
         "location": "India",
+        "university":"University of Mumbai",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -86,7 +107,10 @@
         "name": "Jasmin",
         "age": 23,
         "location": "Taxes",
+        "university":"University of Texas",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -97,7 +121,10 @@
         "name": "Monica",
         "age": 23,
         "location": "New York",
+        "university":"University of New York",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
           {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -108,7 +135,10 @@
         "name": "Phoebe",
         "age": 22,
         "location": "New York City",
+        "university":"University of Phoebe",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -119,7 +149,10 @@
         "name": "Rachel",
         "age": 22,
         "location": "Central Perk",
+        "university":"University of Peradeniya",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -130,7 +163,10 @@
         "name": "Jainis",
         "age": 24,
         "location": "New York",
+        "university":"University of New York",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -141,7 +177,10 @@
         "name": "Samia",
         "age": 19,
         "location": "India",
+        "university":"Oxford University",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -152,7 +191,10 @@
         "name": "Hornol",
         "age": 24,
         "location": "Caltech",
+        "university":"Cambridge University",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -163,7 +205,10 @@
         "name": "Korial",
         "age": 21,
         "location": "Japan",
+        "university":"University of Tokyo",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -174,7 +219,10 @@
         "name": "Chin Si",
         "age": 23,
         "location": "China",
+        "university":"University of Shanghai",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]
@@ -185,7 +233,10 @@
         "name": "SDF",
         "age": 21,
         "location": "America",
+        "university":"University of New York",
+        "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
         "photos":[
             {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
         ]

@@ -22,8 +22,10 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 @Layout(R.layout.tinder_card_view)
-public class TinderCard {
+public class TinderCard{
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
@@ -42,12 +44,30 @@ public class TinderCard {
 
     @View(R.id.imageFooter)
     private LinearLayout imageFooter;
-//
-//    @View(R.id.tabs)
-//    private TabLayout tabs;
 
-    @View(R.string.photo_tip)
-    private String test;
+    @View(R.id.loutProfileDetails)
+    private LinearLayout loutProfileDetails;
+
+    @View(R.id.txtNameAgeProfile)
+    private TextView txtNameAgeProfile;
+
+    @View(R.id.txtUniversity)
+    private TextView txtUniversity;
+
+    @View(R.id.btnMinimize)
+    private CircleImageView btnMinimize;
+
+    @View(R.id.sex)
+    private TextView sex;
+
+    @View(R.id.txtDescription)
+    private TextView txtDescription;
+
+    @View(R.id.txtShareProfile)
+    private TextView txtShareProfile;
+
+    @View(R.id.btnReport)
+    private Button btnReport;
 
     private Profile mProfile;
     private Context mContext;
@@ -72,18 +92,28 @@ public class TinderCard {
     @Resolve
     private void onResolved(){
         Log.d("EVENT","onResolved");
-//        Log.i("TEST2", "On Resolved" + mProfile.getIdentity());
         int numberOfPhotos = al.size();
         Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
 //        Glide.with(mContext).load(mProfile.getPhotos()).into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
+        txtDescription.setText(mProfile.getDescription());
+        txtShareProfile.setText("SHARE " + mProfile.getName().toUpperCase() + "'S PROFILE");
+        btnReport.setText("REPORT " + mProfile.getName().toUpperCase());
+//        Log.i("TEST2", "sex"+mProfile.isFemale());
+        if(mProfile.isFemale()){
+            sex.setText("Women");
+        } else {
+            sex.setText("Man");
+        }
 //        txtNo.setText(mProfile.getIdentity());
 //        for (int i=0; i<al.size(); i++){
 //            Log.i("TEST2", al.get(i));
 //            Glide.with(mContext).load(al.get(i)).into(profileImageView);
 //        }
 //        Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+        txtNameAgeProfile.setText(mProfile.getName() + ", " + mProfile.getAge());
+        txtUniversity.setText(mProfile.getUniversity());
         next.setOnClickListener(v -> {
 //            getImageIndex();
             if(imageIndex<numberOfPhotos-1){
@@ -103,13 +133,23 @@ public class TinderCard {
         imageFooter.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                Log.i("TEST2", "TEST TEST");
-//                FragmentHome fragmentHome = new FragmentHome();
-//                fragmentHome.ToggleFullScreenMode();
                 imageFooter.setVisibility(android.view.View.GONE);
 //                tabs.setVisibility(android.view.View.GONE);
-                FragmentHome fragmentHome = new FragmentHome();
-                fragmentHome.test(mSwipeView, mContext, mProfile);
+                loutProfileDetails.setVisibility(android.view.View.VISIBLE);
+                mSwipeView.lockViews();
+//                final TabLayout tabs = (TabLayout)getActivity().findViewById(R.id.tabs);
+//                tabs.setVisibility(android.view.View.GONE);
+//                Button btnTest = getActivity().findViewById(R.id.btnRewind);
+                
+            }
+        });
+
+        btnMinimize.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                loutProfileDetails.setVisibility(android.view.View.GONE);
+                imageFooter.setVisibility(android.view.View.VISIBLE);
+                mSwipeView.unlockViews();
             }
         });
     }

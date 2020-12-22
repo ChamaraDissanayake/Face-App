@@ -30,9 +30,17 @@ public class Profile {
     @Expose
     private String description;
 
+    @SerializedName("university")
+    @Expose
+    private String university;
+
     @SerializedName("id")
     @Expose
     private int identity;
+
+    @SerializedName("isFemale")
+    @Expose
+    private boolean isFemale;
 
     @SerializedName("photos")
     @Expose
@@ -78,4 +86,12 @@ public class Profile {
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
+
+    public String getUniversity() { return university; }
+
+    public void setUniversity(String university) { this.university = university; }
+
+    public boolean isFemale() { return isFemale; }
+
+    public void setFemale(boolean female) { isFemale = female; }
 }

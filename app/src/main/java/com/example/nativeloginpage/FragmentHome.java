@@ -15,8 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -45,8 +43,9 @@ public class FragmentHome extends Fragment {
     //    public String getProfileData;
     public static ProgressDialog pgd;
 
-    LinearLayout loutProfileDetails;
-    Button btnImage, btnMinimize, btnTest1, btnTest2;
+//    LinearLayout loutProfileDetails;
+//    Button btnImage;
+//    Button btnMinimize;
     boolean tabVisibility;
 
     public FragmentHome() { }
@@ -61,10 +60,11 @@ public class FragmentHome extends Fragment {
     public void onStart() {
         super.onStart();
 
-        loutProfileDetails = getView().findViewById(R.id.loutProfileDetails);
-        btnImage = getView().findViewById(R.id.btnImage);
-        btnMinimize = getView().findViewById(R.id.btnMinimize);
-        tabVisibility = true;
+//        loutProfileDetails = getView().findViewById(R.id.loutProfileDetails);
+//        btnImage = getView().findViewById(R.id.btnImage);
+//        btnMinimize = getView().findViewById(R.id.btnMinimize);
+        tabVisibility = false;
+//        ToggleFullScreenMode();
 
         pgd = new ProgressDialog(getContext());
         pgd.setMessage("Please wait...It is downloading");
@@ -88,8 +88,8 @@ public class FragmentHome extends Fragment {
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowSize.x)
-                        .setViewHeight(windowSize.y - bottomMargin)
+//                        .setViewWidth(windowSize.x)
+//                        .setViewHeight(windowSize.y - bottomMargin)
                         .setViewGravity(Gravity.TOP)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
@@ -106,20 +106,19 @@ public class FragmentHome extends Fragment {
         getView().findViewById(R.id.btnProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToggleFullScreenMode();
+//                ToggleFullScreenMode();
+                Log.i("TEST", "Button is working");
             }
         });
 
-//        TinderCard tinderCard = new TinderCard(mContext);
+//        btnImage.setOnClickListener(v -> ToggleFullScreenMode());
 
-        btnImage.setOnClickListener(v -> ToggleFullScreenMode());
-
-        btnMinimize.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToggleFullScreenMode();
-            }
-        });
+//        btnMinimize.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ToggleFullScreenMode();
+//            }
+//        });
 
 //        btnTest1 = getView().findViewById(R.id.btnTest1);
 //        btnTest2 = getView().findViewById(R.id.btnTest2);
@@ -250,24 +249,22 @@ public class FragmentHome extends Fragment {
     }
 
     public void ToggleFullScreenMode(){
-        Log.i("TEST","Full Screen working");
         final TabLayout tabs = (TabLayout)getActivity().findViewById(R.id.tabs);
 //        LinearLayout linearLayout= getView().findViewById(R.id.imageFooter);
         if (tabVisibility){
             tabs.setVisibility(View.GONE);
-            mSwipeView.lockViews();
-            loutProfileDetails.setVisibility(View.VISIBLE);
-            btnImage.setVisibility(View.GONE);
+//            mSwipeView.lockViews();
+//            loutProfileDetails.setVisibility(View.VISIBLE);
+//            btnImage.setVisibility(View.GONE);
             tabVisibility = false;
 //            linearLayout.setVisibility(View.GONE);
         }else {
             tabs.setVisibility(View.VISIBLE);
-            mSwipeView.unlockViews();
-            loutProfileDetails.setVisibility(View.GONE);
-            btnImage.setVisibility(View.VISIBLE);
+//            mSwipeView.unlockViews();
+//            loutProfileDetails.setVisibility(View.GONE);
+//            btnImage.setVisibility(View.VISIBLE);
             tabVisibility = true;
 //            linearLayout.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -289,12 +286,5 @@ public class FragmentHome extends Fragment {
     }
     public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
-    }
-
-    public void test(SwipePlaceHolderView swipeView, Context context, Profile profile){
-        Log.i("TEST2", "Success");
-//        ToggleFullScreenMode();
-        mSwipeView = swipeView;
-        mSwipeView.lockViews();
     }
 }
