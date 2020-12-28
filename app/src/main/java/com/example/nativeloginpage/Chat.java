@@ -3,20 +3,20 @@ package com.example.nativeloginpage;
 import java.util.ArrayList;
 
 public class Chat {
-    private String cName;
+    private String name;
     private String msg;
 
     public Chat(String cName, String msg) {
-        this.cName = cName;
+        this.name = cName;
         this.msg = msg;
     }
 
-    public String getcName() {
-        return cName;
+    public String getName() {
+        return name;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName;
+    public void setName(String cName) {
+        this.name = cName;
     }
 
     public String getMsg() {

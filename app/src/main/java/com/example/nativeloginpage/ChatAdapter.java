@@ -1,6 +1,7 @@
 package com.example.nativeloginpage;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,14 +23,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
 
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
-//    private ArrayList<String> mChatScrap = new ArrayList<>();
+    private ArrayList<String> mChatScrap = new ArrayList<>();
     private Context mContext;
 
-    public ChatAdapter(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName) {
-//public ChatAdapter(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
+    public ChatAdapter(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
-//        this.mChatScrap = mChatScrap;
+        this.mChatScrap = mChatScrap;
         this.mContext = mContext;
     }
 
@@ -48,11 +48,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
                 .load(mChatImage.get(position))
                 .into(holder.chatImage);
         holder.chatName.setText(mChatName.get(position));
+        holder.chatScrap.setText(mChatScrap.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, mChatImage.get(position),Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, mChatName.get(position),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -63,16 +64,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-
         CircleImageView chatImage;
         TextView chatName, chatScrap;
         ConstraintLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            chatImage = itemView.findViewById(R.id.chat_image);
-            chatName = itemView.findViewById(R.id.chat_name);
-            chatScrap = itemView.findViewById(R.id.parent_layout);
+            Log.d("TEST2", "ViewHolder is Working");
+            chatImage = (CircleImageView) itemView.findViewById(R.id.chat_image);
+            chatName = (TextView) itemView.findViewById(R.id.chat_name);
+            chatScrap = (TextView) itemView.findViewById(R.id.chat_scrap);
+            parentLayout = (ConstraintLayout) itemView.findViewById(R.id.parent_layout);
         }
     }
 }

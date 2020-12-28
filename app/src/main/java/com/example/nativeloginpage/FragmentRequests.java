@@ -14,48 +14,87 @@ import java.util.ArrayList;
 
 public class FragmentRequests extends Fragment {
 
+    View v;
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
+    private ArrayList<String> mChatScrap = new ArrayList<>();
 
     public FragmentRequests() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initImageBitmaps();
+//        initImageBitmaps();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_requests, container, false);
+        v = inflater.inflate(R.layout.fragment_requests, container, false);
+        initImageBitmaps();
+        return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-//        initImageBitmaps();
     }
 
     private void initImageBitmaps(){
         mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        mChatName.add("Test1");
+        mChatName.add("Test 1");
+        mChatScrap.add("Hi");
 
         mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        mChatName.add("Test2");
+        mChatName.add("Test 2");
+        mChatScrap.add("Where are you?");
 
         mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        mChatName.add("Test3");
+        mChatName.add("Test 3");
+        mChatScrap.add("Hi there");
 
         mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-        mChatName.add("Test4");
+        mChatName.add("Test 4");
+        mChatScrap.add("Are you ok?");
 
-//        initRecycleView();
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+        mChatName.add("Test 1");
+        mChatScrap.add("Hi");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+        mChatName.add("Test 2");
+        mChatScrap.add("Where are you?");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+        mChatName.add("Test 3");
+        mChatScrap.add("Hi there");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+        mChatName.add("Test 4");
+        mChatScrap.add("Are you ok?");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+        mChatName.add("Test 1");
+        mChatScrap.add("Hi");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+        mChatName.add("Test 2");
+        mChatScrap.add("Where are you?");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+        mChatName.add("Test 3");
+        mChatScrap.add("Hi there");
+
+        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+        mChatName.add("Test 4");
+        mChatScrap.add("Are you ok?");
+
+        initRecycleView();
     }
 
     private void initRecycleView(){
-        RecyclerView recyclerView = getView().findViewById(R.id.rvChats);
-        ChatAdapter adapter = new ChatAdapter(getContext(), mChatName, mChatImage);
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.rvChats);
+        ChatAdapter adapter = new ChatAdapter(getContext(),mChatImage, mChatName, mChatScrap);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

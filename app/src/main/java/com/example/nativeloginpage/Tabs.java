@@ -12,6 +12,9 @@ import com.google.android.material.tabs.TabLayout;
 
 public class Tabs extends AppCompatActivity {
 
+    private TabLayout tabs;
+    private ChatAdapter chatAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +23,8 @@ public class Tabs extends AppCompatActivity {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = findViewById(R.id.tabs);
+//        TabLayout tabs = findViewById(R.id.tabs);
+        tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(0).setIcon(R.drawable.ic_home_24);
         tabs.getTabAt(1).setIcon(R.drawable.ic_star_24);
