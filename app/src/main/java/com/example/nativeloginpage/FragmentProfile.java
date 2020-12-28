@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentProfile extends Fragment {
     Context myContext;
-    public FragmentProfile() {
-        Log.i("TEST2", "Fragment Profile is working");
-    }
+    public FragmentProfile() { }
 
     CircleImageView imgEditInfo;
 

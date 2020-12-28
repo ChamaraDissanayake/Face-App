@@ -35,13 +35,17 @@ public class Tabs extends AppCompatActivity {
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-
+                int tabPosition = tab.getPosition();
+                if(tabPosition == 1){
+                    tab.getIcon().setColorFilter(Color.parseColor("#FFDF00"), PorterDuff.Mode.SRC_IN);
+                } else {
+                    tab.getIcon().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_IN);
+                tab.getIcon().setColorFilter(Color.parseColor("#787878"), PorterDuff.Mode.SRC_IN);
             }
 
             @Override

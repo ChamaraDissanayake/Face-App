@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.nativeloginpage.FragmentChat;
 import com.example.nativeloginpage.FragmentHome;
 import com.example.nativeloginpage.FragmentProfile;
+import com.example.nativeloginpage.FragmentRequests;
 import com.example.nativeloginpage.R;
 
 /**
@@ -38,7 +39,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new FragmentHome();
                 break;
             case 1:
-                fragment = new FragmentHome();
+                fragment = new FragmentRequests();
                 break;
             case 2:
                 fragment = new FragmentChat();
