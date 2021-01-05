@@ -1,5 +1,6 @@
 package com.example.nativeloginpage;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 public class Tabs extends AppCompatActivity {
 
     private TabLayout tabs;
-    private ChatAdapter chatAdapter;
+    private Adapter_Chat adapterChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,5 +58,11 @@ public class Tabs extends AppCompatActivity {
 
             }
         });
+
+        Intent intent = getIntent();
+        String extra = intent.getStringExtra("From");
+        if(extra != null){
+            tabs.getTabAt(2).select();
+        }
     }
 }

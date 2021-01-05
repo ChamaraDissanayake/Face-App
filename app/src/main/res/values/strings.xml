@@ -10,4 +10,7 @@
     <string name="photo_tip">Photo tip: make waves with a beach photo and get more likes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="messages">Messages</string>
+    <string name="type_a_message">Type a message ...</string>
+    <string name="default_text">Text View a;sdf asd;fjna as;dfjads sad;jasd asdfjgasdfg asdfg;jasdvas vasfd vasdjvadfsvzds fvadf vdasf vdf vsdf vdf g dsfbv dsfv sdfv dsf</string>
 </resources>

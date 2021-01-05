@@ -1,12 +1,11 @@
 package com.example.nativeloginpage;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,42 +17,42 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
-    private static final String TAG = "ChatAdapter";
+public class Adapter_Chat_New extends RecyclerView.Adapter<Adapter_Chat_New.ViewHolder> {
 
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
-    private ArrayList<String> mChatScrap = new ArrayList<>();
     private Context mContext;
 
-    public ChatAdapter(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
+    public Adapter_Chat_New(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
-        this.mChatScrap = mChatScrap;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_list_view, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+    public Adapter_Chat_New.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_list_view_new, parent, false);
+        Adapter_Chat_New.ViewHolder holder = new Adapter_Chat_New.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Adapter_Chat_New.ViewHolder holder, int position) {
         Glide.with(mContext)
                 .asBitmap()
                 .load(mChatImage.get(position))
                 .into(holder.chatImage);
         holder.chatName.setText(mChatName.get(position));
-        holder.chatScrap.setText(mChatScrap.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, mChatName.get(position),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(),PrivateChat.class);
+                intent.putExtra("ChatId", mChatName.get(position));
+                intent.putExtra("ChatImage", mChatImage.get(position));
+                v.getContext().startActivity(intent);
+//                Toast.makeText(mContext, mChatName.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -65,16 +64,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView chatImage;
-        TextView chatName, chatScrap;
+        TextView chatName;
         ConstraintLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            Log.d("TEST2", "ViewHolder is Working");
-            chatImage = (CircleImageView) itemView.findViewById(R.id.chat_image);
-            chatName = (TextView) itemView.findViewById(R.id.chat_name);
-            chatScrap = (TextView) itemView.findViewById(R.id.chat_scrap);
-            parentLayout = (ConstraintLayout) itemView.findViewById(R.id.parent_layout);
+            chatImage = (CircleImageView) itemView.findViewById(R.id.chat_image_new);
+            chatName = (TextView) itemView.findViewById(R.id.chat_name_new);
+            parentLayout = (ConstraintLayout) itemView.findViewById(R.id.parent_layout_new);
         }
     }
 }
