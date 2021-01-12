@@ -96,7 +96,7 @@ public class FragmentChat extends Fragment {
 
     private void initRecycleView(){
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.rvChatted);
-        Adapter_Chat adapter = new Adapter_Chat(getContext(), mChatImage, mChatName, mChatScrap);
+        AdapterChat adapter = new AdapterChat(getContext(), mChatImage, mChatName, mChatScrap);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -143,7 +143,7 @@ public class FragmentChat extends Fragment {
 
     private void initRecycleViewNew(){
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.rvChatNew);
-        Adapter_Chat_New adapter = new Adapter_Chat_New(getContext(),mChatImageNew, mChatNameNew);
+        AdapterChatHorizontal adapter = new AdapterChatHorizontal(getContext(),mChatImageNew, mChatNameNew);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
     }

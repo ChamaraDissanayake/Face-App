@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Adapter_Chat_New extends RecyclerView.Adapter<Adapter_Chat_New.ViewHolder> {
+public class AdapterChatHorizontal extends RecyclerView.Adapter<AdapterChatHorizontal.ViewHolder> {
 
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
     private Context mContext;
 
-    public Adapter_Chat_New(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName) {
+    public AdapterChatHorizontal(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
         this.mContext = mContext;
@@ -31,14 +31,14 @@ public class Adapter_Chat_New extends RecyclerView.Adapter<Adapter_Chat_New.View
 
     @NonNull
     @Override
-    public Adapter_Chat_New.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterChatHorizontal.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_list_view_new, parent, false);
-        Adapter_Chat_New.ViewHolder holder = new Adapter_Chat_New.ViewHolder(view);
+        AdapterChatHorizontal.ViewHolder holder = new AdapterChatHorizontal.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_Chat_New.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterChatHorizontal.ViewHolder holder, int position) {
         Glide.with(mContext)
                 .asBitmap()
                 .load(mChatImage.get(position))
@@ -52,7 +52,6 @@ public class Adapter_Chat_New extends RecyclerView.Adapter<Adapter_Chat_New.View
                 intent.putExtra("ChatId", mChatName.get(position));
                 intent.putExtra("ChatImage", mChatImage.get(position));
                 v.getContext().startActivity(intent);
-//                Toast.makeText(mContext, mChatName.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -17,6 +17,7 @@ public class FragmentRequests extends Fragment {
     View v;
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
+    private ArrayList<String> al;
 
     public FragmentRequests() { }
 
@@ -29,7 +30,9 @@ public class FragmentRequests extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_requests, container, false);
-        initImageBitmapsNew();
+//        initImageBitmapsNew();
+        al = new ArrayList<String>();
+        initPhotoSet();
         return v;
     }
 
@@ -38,50 +41,66 @@ public class FragmentRequests extends Fragment {
         super.onStart();
     }
 
-    private void initImageBitmapsNew(){
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        mChatName.add("Test 1");
+//    private void initImageBitmapsNew(){
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+//        mChatName.add("Test 1");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+//        mChatName.add("Test 2");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+//        mChatName.add("Test 3");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+//        mChatName.add("Test 4");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+//        mChatName.add("Test 1");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+//        mChatName.add("Test 2");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+//        mChatName.add("Test 3");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+//        mChatName.add("Test 4");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+//        mChatName.add("Test 1");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+//        mChatName.add("Test 2");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+//        mChatName.add("Test 3");
+//
+//        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+//        mChatName.add("Test 4");
+//
+//        initRecycleViewNew();
+//    }
+//
+//    private void initRecycleViewNew(){
+//        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.rvChats);
+//        AdapterChatHorizontal adapter = new AdapterChatHorizontal(getContext(),mChatImage, mChatName);
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+//    }
 
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        mChatName.add("Test 2");
+    private void initPhotoSet(){
+        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
 
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        mChatName.add("Test 3");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-        mChatName.add("Test 4");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        mChatName.add("Test 1");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        mChatName.add("Test 2");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        mChatName.add("Test 3");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-        mChatName.add("Test 4");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        mChatName.add("Test 1");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        mChatName.add("Test 2");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        mChatName.add("Test 3");
-
-        mChatImage.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-        mChatName.add("Test 4");
-
-        initRecycleViewNew();
+        initRecycleView();
     }
 
-    private void initRecycleViewNew(){
+    private void initRecycleView(){
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.rvChats);
-        Adapter_Chat_New adapter = new Adapter_Chat_New(getContext(),mChatImage, mChatName);
+        AdapterSliderButton adapter = new AdapterSliderButton(al);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
     }
 }

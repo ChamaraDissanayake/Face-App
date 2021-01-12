@@ -19,7 +19,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mindorks.placeholderview.SwipeDecor;
@@ -42,11 +42,12 @@ public class FragmentHome extends Fragment {
     public static String profileList; //Uncomment this when get data from service call
     //    public String getProfileData;
     public static ProgressDialog pgd;
+    private static FloatingActionButton btnBoost, btnRewind;
 
 //    LinearLayout loutProfileDetails;
 //    Button btnImage;
 //    Button btnMinimize;
-    boolean tabVisibility;
+//    boolean tabVisibility;
 
     public FragmentHome() { }
 
@@ -63,7 +64,7 @@ public class FragmentHome extends Fragment {
 //        loutProfileDetails = getView().findViewById(R.id.loutProfileDetails);
 //        btnImage = getView().findViewById(R.id.btnImage);
 //        btnMinimize = getView().findViewById(R.id.btnMinimize);
-        tabVisibility = false;
+//        tabVisibility = false;
 //        ToggleFullScreenMode();
 
         pgd = new ProgressDialog(getContext());
@@ -99,44 +100,27 @@ public class FragmentHome extends Fragment {
             mSwipeView.addView(new TinderCard(mContext, profile, mSwipeView));
         }
 
-        getView().findViewById(R.id.btnReject).setOnClickListener(v -> mSwipeView.doSwipe(false));
+        getView().findViewById(R.id.btnReject).setOnClickListener(v -> {
+            TinderCard.setViewToSwipe();
+            mSwipeView.doSwipe(false);
+            showFabButtons();
+        });
 
-        getView().findViewById(R.id.btnAccept).setOnClickListener(v -> mSwipeView.doSwipe(true));
+        getView().findViewById(R.id.btnAccept).setOnClickListener(v -> {
+            TinderCard.setViewToSwipe();
+            mSwipeView.doSwipe(true);
+            showFabButtons();
+        });
 
         getView().findViewById(R.id.btnProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ToggleFullScreenMode();
                 Log.i("TEST", "Button is working");
             }
         });
 
-//        btnImage.setOnClickListener(v -> ToggleFullScreenMode());
-
-//        btnMinimize.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ToggleFullScreenMode();
-//            }
-//        });
-
-//        btnTest1 = getView().findViewById(R.id.btnTest1);
-//        btnTest2 = getView().findViewById(R.id.btnTest2);
-//
-//        btnTest1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i("TEST2", "index" + tinderCard.getImageIndex());
-//            }
-//        });
-//
-//        btnTest2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                tinderCard.setImageIndex(3);
-//                Log.i("TEST2", "index" + tinderCard.getImageIndex());
-//            }
-//        });
+        btnBoost = (FloatingActionButton) getView().findViewById(R.id.btnBoost);
+        btnRewind = (FloatingActionButton) getView().findViewById(R.id.btnRewind);
     }
 
 //    public String getProfileData(Context context){
@@ -248,26 +232,6 @@ public class FragmentHome extends Fragment {
         return json;
     }
 
-    public void ToggleFullScreenMode(){
-        final TabLayout tabs = (TabLayout)getActivity().findViewById(R.id.tabs);
-//        LinearLayout linearLayout= getView().findViewById(R.id.imageFooter);
-        if (tabVisibility){
-            tabs.setVisibility(View.GONE);
-//            mSwipeView.lockViews();
-//            loutProfileDetails.setVisibility(View.VISIBLE);
-//            btnImage.setVisibility(View.GONE);
-            tabVisibility = false;
-//            linearLayout.setVisibility(View.GONE);
-        }else {
-            tabs.setVisibility(View.VISIBLE);
-//            mSwipeView.unlockViews();
-//            loutProfileDetails.setVisibility(View.GONE);
-//            btnImage.setVisibility(View.VISIBLE);
-            tabVisibility = true;
-//            linearLayout.setVisibility(View.VISIBLE);
-        }
-    }
-
     @Contract("_ -> new")
     public static @NotNull Point getDisplaySize(WindowManager windowManager){
         try {
@@ -286,5 +250,15 @@ public class FragmentHome extends Fragment {
     }
     public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    public static void hideFabButtons(){
+        btnBoost.hide();
+        btnRewind.hide();
+    }
+
+    public static void showFabButtons(){
+        btnBoost.show();
+        btnRewind.show();
     }
 }

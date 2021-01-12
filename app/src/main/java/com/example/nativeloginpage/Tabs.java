@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -13,18 +14,16 @@ import com.google.android.material.tabs.TabLayout;
 
 public class Tabs extends AppCompatActivity {
 
-    private TabLayout tabs;
-    private Adapter_Chat adapterChat;
+    private static TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
-
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
-//        TabLayout tabs = findViewById(R.id.tabs);
+
         tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(0).setIcon(R.drawable.ic_home_24);
@@ -64,5 +63,22 @@ public class Tabs extends AppCompatActivity {
         if(extra != null){
             tabs.getTabAt(2).select();
         }
+//        Display();
     }
+
+    public static void showTabBar(boolean bool){
+        if(bool){
+            tabs.setVisibility(View.VISIBLE);
+        } else {
+            tabs.setVisibility(View.GONE);
+        }
+    }
+
+//    public void Display(){
+//        Display display = getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int width = size.x;
+//        Log.i("TEST2", "width" + width);
+//    }
 }

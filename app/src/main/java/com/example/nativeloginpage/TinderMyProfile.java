@@ -19,4 +19,7 @@ public class TinderMyProfile extends AppCompatActivity {
         this.myContext = myContext;
         this.myProfile = myProfile;
     }
+
+    public TinderMyProfile() {
+    }
 }

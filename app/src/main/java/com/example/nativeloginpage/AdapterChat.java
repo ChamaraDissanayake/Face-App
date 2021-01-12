@@ -17,14 +17,14 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Adapter_Chat extends RecyclerView.Adapter<Adapter_Chat.ViewHolder>{
+public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder>{
 
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
     private ArrayList<String> mChatScrap = new ArrayList<>();
     private Context mContext;
 
-    public Adapter_Chat(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
+    public AdapterChat(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
         this.mChatScrap = mChatScrap;

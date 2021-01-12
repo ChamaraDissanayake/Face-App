@@ -46,7 +46,7 @@
                 android:id="@+id/stickyLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/message_page_white_gradient"
+                android:background="@drawable/gradient_message_page_white"
                 android:orientation="vertical"
                 android:paddingBottom="20dp">
 
@@ -67,7 +67,6 @@
                         android:id="@+id/rvChatNew"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-
                 </LinearLayout>
 
                 <TextView
@@ -83,12 +82,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvChatted"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="1000dp"
-                    android:nestedScrollingEnabled="false"/>
+                    android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvChatted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:nestedScrollingEnabled="false"/>
+                </RelativeLayout>
 
             </LinearLayout>
         </LinearLayout>

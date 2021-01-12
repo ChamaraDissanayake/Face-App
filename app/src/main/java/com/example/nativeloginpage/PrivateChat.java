@@ -3,10 +3,12 @@ package com.example.nativeloginpage;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,13 +23,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrivateChat extends AppCompatActivity {
 
-    private Button btnBack, btnSend;
+    private Button btnBack, btnSend, btnVideo;
     private String chatId, chatImage;
     private Intent intent;
     private CircleImageView civ;
     private TextView ChatName;
     private EditText sendMessage;
     private Context mContext;
+    private ScrollView scrollView;
 
     private ArrayList<String> mChatId = new ArrayList<>();
     private ArrayList<String> mChatContent = new ArrayList<>();
@@ -42,7 +45,9 @@ public class PrivateChat extends AppCompatActivity {
         intent = getIntent();
         btnBack = findViewById(R.id.btnBack);
         btnSend = findViewById(R.id.btnSend);
+        btnVideo = findViewById(R.id.btnVideo);
         civ = findViewById(R.id.chat_private_header_image);
+        scrollView = findViewById(R.id.svMessages);
 
         chatId = intent.getStringExtra("ChatId");
         chatImage = intent.getStringExtra("ChatImage");
@@ -54,6 +59,9 @@ public class PrivateChat extends AppCompatActivity {
                 .asBitmap()
                 .load(chatImage)
                 .into(civ);
+
+        initPrivateChat();
+        scrollFix();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +81,20 @@ public class PrivateChat extends AppCompatActivity {
                     initRecycleView();
                     sendMessage.setText(null);
                 }
-//                closeKeyboard();
+                scrollFix();
+                new Handler().postDelayed(() -> sendMessage.requestFocus(), 100);
             }
         });
-        initPrivateChat();
+        btnVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mChatId.add("2");
+                mChatContent.add("Dummy test added");
+                initRecycleView();
+                scrollFix();
+                new Handler().postDelayed(() -> sendMessage.requestFocus(), 100);
+            }
+        });
     }
 
     @Override
@@ -126,10 +144,10 @@ public class PrivateChat extends AppCompatActivity {
 
     private void initRecycleView(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvPrivateChat);
-        Adapter_Chat_Content adapter = new Adapter_Chat_Content(mChatId, mChatContent);
+        AdapterChatContent adapter = new AdapterChatContent(mChatId, mChatContent);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount());
+//        recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount());
     }
 
     private void closeKeyboard(){
@@ -138,5 +156,14 @@ public class PrivateChat extends AppCompatActivity {
             InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(mContext.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
         }
+    }
+
+    private void scrollFix(){
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
     }
 }

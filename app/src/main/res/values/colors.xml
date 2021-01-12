@@ -15,4 +15,5 @@
     <color name="light_gray">#EAEDFE</color>
     <color name="pink">#FF69B4</color>
     <color name="red">#E91E1E</color>
+    <color name="half_transparent">#33000000</color>
 </resources>

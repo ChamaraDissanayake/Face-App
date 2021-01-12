@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter_Chat_Content extends RecyclerView.Adapter<Adapter_Chat_Content.ViewHolder> {
+public class AdapterChatContent extends RecyclerView.Adapter<AdapterChatContent.ViewHolder> {
 
     private ArrayList<String> mChatId = new ArrayList<>();
     private ArrayList<String> mChatContent = new ArrayList<>();
 
-    public Adapter_Chat_Content(ArrayList<String> mChatId, ArrayList<String> mChatContent) {
+    public AdapterChatContent(ArrayList<String> mChatId, ArrayList<String> mChatContent) {
         this.mChatId = mChatId;
         this.mChatContent = mChatContent;
     }
@@ -23,13 +23,13 @@ public class Adapter_Chat_Content extends RecyclerView.Adapter<Adapter_Chat_Cont
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_view_content, parent, false);
-        Adapter_Chat_Content.ViewHolder holder = new Adapter_Chat_Content.ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_content_view, parent, false);
+        AdapterChatContent.ViewHolder holder = new AdapterChatContent.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_Chat_Content.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterChatContent.ViewHolder holder, int position) {
         holder.chatId = mChatId.get(position);
         if(holder.chatId.equals("1")){
             holder.sentMessages.setText(mChatContent.get(position));
