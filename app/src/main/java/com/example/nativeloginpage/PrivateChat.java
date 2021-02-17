@@ -66,9 +66,10 @@ public class PrivateChat extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Tabs.class);
-                intent.putExtra("From", "Chat");
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), Tabs.class);
+//                intent.putExtra("From", "Chat");
+//                startActivity(intent);
+                finish();
             }
         });
         btnSend.setOnClickListener(new View.OnClickListener() {

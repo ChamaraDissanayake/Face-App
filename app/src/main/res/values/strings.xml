@@ -13,4 +13,13 @@
     <string name="messages">Messages</string>
     <string name="type_a_message">Type a message ...</string>
     <string name="default_text">Text View a;sdf asd;fjna as;dfjads sad;jasd asdfjgasdfg asdfg;jasdvas vasfd vasdjvadfsvzds fvadf vdasf vdf vsdf vdf g dsfbv dsfv sdfv dsf</string>
+    <string name="my_number_is">My number is</string>
+    <string name="number_request_message">When you tap CONTINUE, Face App will send you a text with verification code. Message and data rate may apply. The verified number can be used to log in</string>
+    <string name="my_code_is">My code is</string>
+    <string name="get_gender">I am a</string>
+    <string name="my_university_is">My university is</string>
+    <string name="university_description">This is how it will appear in Face App, and you will not be able to change it.</string>
+    <string name="university_name">University Name</string>
+    <string name="ask_location">You\'ll need to enable your \n location \n in order to use Face App</string>
+    <string name="location_permission_explain">Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
 </resources>

@@ -3,16 +3,16 @@ package com.example.nativeloginpage;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Profile {
-    @SerializedName("name")
+    @SerializedName("user_name")
     @Expose
     private String name;
 
-    @SerializedName("url")
-    @Expose
-    private String imageUrl;
+//    @SerializedName("url")
+//    @Expose
+//    private String imageUrl;
 
     @SerializedName("zodiac")
     @Expose
@@ -20,7 +20,7 @@ public class Profile {
 
     @SerializedName("age")
     @Expose
-    private Integer age;
+    private String age;
 
     @SerializedName("location")
     @Expose
@@ -34,9 +34,9 @@ public class Profile {
     @Expose
     private String university;
 
-    @SerializedName("id")
+    @SerializedName("user_id")
     @Expose
-    private int identity;
+    private String identity;
 
     @SerializedName("isFemale")
     @Expose
@@ -44,34 +44,56 @@ public class Profile {
 
     @SerializedName("photos")
     @Expose
-    private List<PhotoSet> photos = null;
-//    private List<PhotoSet> photos = new ArrayList<PhotoSet>();
+    private ArrayList photos;
 
-    public List<PhotoSet> getPhotos() { return photos; }
+    @SerializedName("passions")
+    @Expose
+    private ArrayList passions;
 
-    public void setPhotos(List<PhotoSet> photos) { this.photos = photos; }
 
-    public int getIdentity() { return identity; }
+    public ArrayList getPassions() {
+        return passions;
+    }
 
-    public void setIdentity(int identity) { this.identity = identity; }
+    public void setPassions(ArrayList passions) {
+        this.passions = passions;
+    }
+
+    public ArrayList getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(ArrayList photos) {
+        this.photos = photos;
+    }
+
+//    @SerializedName("photos")
+//    @Expose
+//    private List<PhotoSet> photos = null;
+//    public List<PhotoSet> getPhotos() { return photos; }
+//    public void setPhotos(List<PhotoSet> photos) { this.photos = photos; }
+
+    public String getIdentity() { return identity; }
+
+    public void setIdentity(String identity) { this.identity = identity; }
 
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
 
-    public String getImageUrl() { return imageUrl; }
-
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+//    public String getImageUrl() { return imageUrl; }
+//
+//    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
     public String getZodiac() { return zodiac; }
 
     public void setZodiac(String zodiac) { this.zodiac = zodiac; }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

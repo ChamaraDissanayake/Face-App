@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -23,6 +21,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
+import org.apmem.tools.layouts.FlowLayout;
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -30,8 +29,8 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 @SuppressLint("NonConstantResourceId")
-@Layout(R.layout.tinder_card_view)
-public class TinderCard{
+@Layout(R.layout.profiles_card_view)
+public class ProfilesCard {
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
@@ -54,9 +53,6 @@ public class TinderCard{
     @View(R.id.loutProfileDetails)
     private LinearLayout loutProfileDetails;
 
-    @View(R.id.loutProfileDetails)
-    private static LinearLayout loutProfileDetailsStatic;
-
     @View(R.id.txtNameAgeProfile)
     private TextView txtNameAgeProfile;
 
@@ -78,28 +74,31 @@ public class TinderCard{
     @View(R.id.btnReport)
     private Button btnReport;
 
-    @View(R.id.loutSlider)
-    private LinearLayout loutSlider;
+    @View(R.id.loutPassions)
+    private FlowLayout loutPassions;
 
-    @View(R.id.rvImageSlider)
-    private RecyclerView rvImageSlider;
+//    @View(R.id.loutSlider)
+//    private LinearLayout loutSlider;
+//
+//    @View(R.id.rvImageSlider)
+//    private RecyclerView rvImageSlider;
 
 
 
-    private Profile mProfile;
-    private Context mContext;
+    private final Profile mProfile;
+    private final Context mContext;
     private static SwipePlaceHolderView mSwipeView;
     private ArrayList<String> al;
     private int imageIndex;
 //    private static Button btnSlider;
 
-    public TinderCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
+    public ProfilesCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
         mContext = context;
         mProfile = profile;
         mSwipeView = swipeView;
         imageIndex = 0;
 
-        al = new ArrayList<String>();
+        al = new ArrayList<>();
     }
 
     private void initPhotoSet(){
@@ -107,23 +106,25 @@ public class TinderCard{
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-
-        initRecycleView();
+//        initRecycleView();
     }
+//
+//    private void initRecycleView(){
+//        RecyclerView recyclerView = (RecyclerView) rvImageSlider;
+//        AdapterSliderButton adapter = new AdapterSliderButton(mProfile.getPhotos());
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
+//    }
 
-    private void initRecycleView(){
-        RecyclerView recyclerView = (RecyclerView) rvImageSlider;
-        AdapterSliderButton adapter = new AdapterSliderButton(al);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
-    }
-
+    @SuppressLint("SetTextI18n")
     @Resolve
     private void onResolved(){
         Log.d("EVENT","onResolved");
         initPhotoSet();
-        int numberOfPhotos = al.size();
-        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
+//        int numberOfPhotos = al.size();
+//        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
+        int numberOfPhotos = mProfile.getPhotos().size();
+        Glide.with(mContext).load(mProfile.getPhotos().get(0).toString()).into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + " " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
         txtDescription.setText(mProfile.getDescription());
@@ -150,21 +151,23 @@ public class TinderCard{
         next.setOnClickListener(v -> {
             if(imageIndex<numberOfPhotos-1){
                 setImageIndex(imageIndex+1);
-                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+                Glide.with(mContext).load(mProfile.getPhotos().get(imageIndex).toString()).into(profileImageView);
+//                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
             }
         });
 
         back.setOnClickListener(v -> {
             if(imageIndex>0){
                 setImageIndex(imageIndex-1);
-                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+                Glide.with(mContext).load(mProfile.getPhotos().get(imageIndex).toString()).into(profileImageView);
+//                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
             }
         });
 
         imageFooter.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                loutProfileDetailsStatic.setVisibility(android.view.View.VISIBLE);
+                loutProfileDetails.setVisibility(android.view.View.VISIBLE);
                 imageFooter.setVisibility(android.view.View.GONE);
                 btnMinimize.setVisibility(android.view.View.VISIBLE);
                 mSwipeView.lockViews();
@@ -176,7 +179,7 @@ public class TinderCard{
         btnMinimize.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                loutProfileDetailsStatic.setVisibility(android.view.View.GONE);
+                loutProfileDetails.setVisibility(android.view.View.GONE);
                 imageFooter.setVisibility(android.view.View.VISIBLE);
                 btnMinimize.setVisibility(android.view.View.GONE);
                 mSwipeView.unlockViews();
@@ -184,26 +187,36 @@ public class TinderCard{
                 FragmentHome.showFabButtons();
             }
         });
-
+        getPassions();
     }
 
     public static void setViewToSwipe(){
-        loutProfileDetailsStatic.setVisibility(android.view.View.GONE);
+//        loutProfileDetailsStatic.setVisibility(android.view.View.GONE);
         mSwipeView.unlockViews();
         Tabs.showTabBar(true);
     }
 
-    private void setSliderButtons(){
-        android.view.View view = LayoutInflater.from(mContext).inflate(R.layout.slider_button_view, loutSlider, true);
-        Button btnSlider = view.findViewById(R.id.btnSlider);
+//    private void setSliderButtons(){
+//        android.view.View view = LayoutInflater.from(mContext).inflate(R.layout.slider_button_view, loutSlider, true);
+//        Button btnSlider = view.findViewById(R.id.btnSlider);
+//
+//        btnSlider.setOnClickListener(new android.view.View.OnClickListener() {
+//            @Override
+//            public void onClick(android.view.View v) {
+//                int test =  btnSlider.getContext().getResources().getColor(R.color.white);
+//                btnSlider.setBackgroundColor(test);
+//            }
+//        });
+//    }
 
-        btnSlider.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                int test =  btnSlider.getContext().getResources().getColor(R.color.white);
-                btnSlider.setBackgroundColor(test);
-            }
-        });
+    private void getPassions(){
+        for(int i =0; i<mProfile.getPassions().size(); i++) {
+            android.view.View view = LayoutInflater.from(mContext).inflate(R.layout.passions_set_view, loutPassions, false);
+            ToggleButton btnPassions = view.findViewById(R.id.btnPassion);
+            btnPassions.setText(mProfile.getPassions().get(i).toString());
+            btnPassions.setClickable(false);
+            loutPassions.addView(view);
+        }
     }
     @SwipeOut
     private void onSwipedOut(){

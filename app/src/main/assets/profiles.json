@@ -1,244 +1,212 @@
 [
     {
-        "id": 1,
+        "user_id": 1,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg",
-        "name": "Emma",
+        "user_name": "Emma",
         "age": 20,
         "location": "New York",
         "university":"University of Wales",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Grab a Drink"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Foodie"},{"id":"Writer"}],
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
         "photos":[
-            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg"},
-            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg"},
-            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg"},
-            {"url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg"}
+            "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg",
+            "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg",
+            "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg",
+            "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg"
         ]
     },
     {
-        "id": 2,
+        "user_id": 2,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image2.jpg",
-        "name": "Zoya",
+        "user_name": "Zoya",
         "age": 23,
         "location": "Atlantic City",
         "university":"University of Colombo",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 3,
+        "user_id": 3,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image3.jpg",
-        "name": "Roma",
+        "user_name": "Roma",
         "age": 22,
         "location": "California",
         "university":"University of Ruhuna",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
 
     {
-        "id": 4,
+        "user_id": 4,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image4.jpg",
-        "name": "Carol",
+        "user_name": "Carol",
         "age": 19,
         "location": "New City",
         "university":"University of New City",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Netflix", "Language exchange", "Travel","Comedy", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 5,
+        "user_id": 5,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image5.jpg",
-        "name": "Saansa",
+        "user_name": "Saansa",
         "age": 20,
         "location": "Manhattan",
         "university":"University of Manhattan",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 6,
+        "user_id": 6,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image6.jpg",
-        "name": "Khaleesi",
+        "user_name": "Khaleesi",
         "age": 24,
         "location": "Future Westros",
         "university":"University of Westros",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 7,
+        "user_id": 7,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image7.jpg",
-        "name": "Heena",
+        "user_name": "Heena",
         "age": 21,
         "location": "India",
         "university":"University of Mumbai",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 8,
+        "user_id": 8,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image8.jpg",
-        "name": "Jasmin",
+        "user_name": "Jasmin",
         "age": 23,
         "location": "Taxes",
         "university":"University of Texas",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 9,
+        "user_id": 9,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image9.jpg",
-        "name": "Monica",
+        "user_name": "Monica",
         "age": 23,
         "location": "New York",
         "university":"University of New York",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-          {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 10,
+        "user_id": 10,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image10.jpg",
-        "name": "Phoebe",
+        "user_name": "Phoebe",
         "age": 22,
         "location": "New York City",
         "university":"University of Phoebe",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-           {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 11,
+        "user_id": 11,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image11.jpg",
-        "name": "Rachel",
+        "user_name": "Rachel",
         "age": 22,
         "location": "Central Perk",
         "university":"University of Peradeniya",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 12,
+        "user_id": 12,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image12.jpg",
-        "name": "Jainis",
+        "user_name": "Jainis",
         "age": 24,
         "location": "New York",
         "university":"University of New York",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 13,
+        "user_id": 13,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image13.jpg",
-        "name": "Samia",
+        "user_name": "Samia",
         "age": 19,
         "location": "India",
         "university":"Oxford University",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 14,
+        "user_id": 14,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image14.jpg",
-        "name": "Hornol",
+        "user_name": "Hornol",
         "age": 24,
         "location": "Caltech",
-        "university":"Cambridge University",
+        "university":"Cambruser_idge University",
         "isFemale": true,
-        "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "description": "Accuser_ording to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 15,
+        "user_id": 15,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image15.jpg",
-        "name": "Korial",
+        "user_name": "Korial",
         "age": 21,
         "location": "Japan",
         "university":"University of Tokyo",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 16,
+        "user_id": 16,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image16.jpg",
-        "name": "Chin Si",
+        "user_name": "Chin Si",
         "age": 23,
         "location": "China",
         "university":"University of Shanghai",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     },
     {
-        "id": 17,
+        "user_id": 17,
         "url": "https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image17.jpg",
-        "name": "SDF",
+        "user_name": "SDF",
         "age": 21,
         "location": "America",
         "university":"University of New York",
         "isFemale": true,
         "description": "According to my 9th grade report card I’m a “hard working conscientious student” who is also “easily distracted in class”. What can I say? I do my homework but I also tend to daydream. Pretty much sums up who I still am today.",
-        "passions": [{"id":"Netflix"},{"id":"Language exchange"},{"id":"Travel"},{"id":"Comedy"},{"id":"Writer"}],
-        "photos":[
-            {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-        ]
+        "passions": ["Grab a Drink", "Language exchange", "Travel", "Foodie", "Writer"],
+        "photos":["https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"]
     }
 ]

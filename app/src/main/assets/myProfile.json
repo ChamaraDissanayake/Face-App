@@ -1,20 +1,13 @@
-[{
-  "myId": 1001,
-  "myUrl": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg",
-  "myName": "Chamara",
+{
+  "myName": "Chamara Dissanayake",
   "myAge": 29,
-  "myLocation": "Colombo 05",
-  "myPassions": [{"id":"one"},{"id":"two"},{"id":"three"},{"id":"four"},{"id":"five"}],
-  "myJob": "ASE",
-  "myCompany": "Evoke",
-  "mySchool": "UOJ",
-  "myZodiac": "Sagittarius",
-  "myDescription": "I love New Yorker articles, staring out the window and wondering about other people’s lives on long car rides, and that first sip of beer you have after a long week on a Friday night. (Preferably it’s an IPA, but I like all kinds of craft brews.) Interested in meeting people who are interesting.",
-  "showGender": false,
-  "showAge": true,
-  "showDistance": false,
-  "myPhotos":[
-    {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"},
-    {"url": "https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg"}
-  ]
-}]
+  "fbId":"102042351870141",
+  "myEmail":"chamara@evoke.lk",
+  "myProfileImage":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=102042351870136&height=200&width=200&ext=1614314327&hash=AeSCuAgjzQkK8iyqhfA",
+  "myNumber": "0141221111",
+  "isFemale": false,
+  "showGender": true,
+  "myUniversity": "University of Jaffna",
+  "myPassions": ["one","two","three","four","five"],
+  "myLocation":"7.1553552,80.1414968"
+}

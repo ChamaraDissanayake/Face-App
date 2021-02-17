@@ -3,8 +3,6 @@ package com.example.nativeloginpage;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class MyProfile {
 
     @SerializedName("myName")
@@ -54,10 +52,6 @@ public class MyProfile {
     @SerializedName("showDistance")
     @Expose
     private boolean showDistance;
-
-    @SerializedName("myPhotos")
-    @Expose
-    private List<PhotoSet> myPhotos = null;
 
     public String getMyName() {
         return myName;
@@ -155,11 +149,4 @@ public class MyProfile {
         this.showDistance = showDistance;
     }
 
-    public List<PhotoSet> getMyPhotos() {
-        return myPhotos;
-    }
-
-    public void setMyPhotos(List<PhotoSet> myPhotos) {
-        this.myPhotos = myPhotos;
-    }
 }

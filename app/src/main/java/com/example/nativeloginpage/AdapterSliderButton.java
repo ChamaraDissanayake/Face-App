@@ -31,9 +31,8 @@ public class AdapterSliderButton extends RecyclerView.Adapter<AdapterSliderButto
     @Override
     public void onBindViewHolder(@NonNull AdapterSliderButton.ViewHolder holder, int position) {
         int getColorWhite =  holder.btnSlider.getContext().getResources().getColor(R.color.white);
-        int getColorTansparent = holder.btnSlider.getContext().getResources().getColor(R.color.half_transparent);
-        Log.i("TEST2", "onBindViewHolder");
-        holder.btnSlider.setBackgroundColor(getColorTansparent);
+        int getColorTransparent = holder.btnSlider.getContext().getResources().getColor(R.color.half_transparent);
+        holder.btnSlider.setBackgroundColor(getColorTransparent);
 
         if(position==0){
             holder.btnSlider.setBackgroundColor(getColorWhite);

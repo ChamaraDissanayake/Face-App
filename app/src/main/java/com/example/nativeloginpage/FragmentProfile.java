@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,14 +23,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentProfile extends Fragment {
-    Context myContext;
-    public FragmentProfile() { }
+    Context mContext;
+    TextView txtShowUniversity, txtShowName ;
+    CircleImageView profile_image;
 
-    CircleImageView imgEditInfo;
+    public FragmentProfile() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,25 +48,33 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        myContext = getContext();
-        getView().findViewById(R.id.imgEditInfo).setOnClickListener(new View.OnClickListener() {
+        mContext = getContext();
+
+        Objects.requireNonNull(getView()).findViewById(R.id.btnEditProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),TinderMyProfile.class));
+                startActivity(new Intent(getContext(), EditProfile.class));
             }
         });
-        getView().findViewById(R.id.imgSettings).setOnClickListener(new View.OnClickListener() {
+
+        getView().findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),Settings.class));
             }
         });
+        profile_image = getView().findViewById(R.id.profile_image);
+        txtShowUniversity = getView().findViewById(R.id.txtShowUniversity);
+        txtShowName = getView().findViewById(R.id.txtShowName);
 
-        for(MyProfile myProfile : loadMyProfile(myContext)){
-//            mSwipeView.addView(new TinderCard(mContext, profile, mSwipeView));
-            TinderMyProfile tinderMyProfile = new TinderMyProfile(myContext, myProfile);
-        }
-//        loadMyProfile(myContext);
+//        for(MyProfile myProfile : Objects.requireNonNull(loadMyProfile(mContext))){
+////            mSwipeView.addView(new ProfilesCard(mContext, profile, mSwipeView));
+//            EditProfile tinderMyProfile = new EditProfile(mContext, myProfile);
+//        }
+//        loadMyProfile(mContext);
+        Glide.with(mContext).load(Tabs.getProfileImage()).into(profile_image);
+        txtShowName.setText(Tabs.getProfileName());
+        txtShowUniversity.setText(Tabs.getProfileUniversity());
     }
 
     public static @Nullable List<MyProfile> loadMyProfile(Context context){

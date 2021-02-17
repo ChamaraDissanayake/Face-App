@@ -3,6 +3,10 @@
     package="com.example.nativeloginpage">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,17 +14,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NativeLoginPage">
-        <activity android:name=".PrivateChat"></activity>
+        android:theme="@style/Theme.NativeLoginPage"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".GetPassionsEdit" />
+        <activity android:name=".GetLocation" />
+        <activity android:name=".GetPassions" />
+        <activity android:name=".GetUniversity" />
+        <activity android:name=".GetGender" />
+        <activity android:name=".GetPhoneOTP" />
+        <activity android:name=".GetPhoneNumber" />
+        <activity android:name=".PrivateChat" />
         <activity android:name=".Settings" />
-        <activity android:name=".TinderMyProfile" />
-        <activity android:name=".UserDetails" />
-        <activity
-            android:name=".SignUp"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".LoginChoose"
-            android:screenOrientation="portrait">
+        <activity android:name=".EditProfile"/>
+        <activity android:name=".UserLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +37,15 @@
             android:name=".Tabs"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.NativeLoginPage.NoActionBar" />
+            android:theme="@style/Theme.NativeLoginPage.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
