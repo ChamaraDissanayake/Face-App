@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseShowMe">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F6F5EB"
+        android:gravity="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/EditProfileToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btnShowMeBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/ic_back"
+                app:backgroundTint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/EditProfileToolbar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtChatName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:text="Show Me"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnShowMeBack"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:text="Show Me"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loutSetLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_corners_lite"
+        android:paddingStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+        <RadioGroup
+            android:id="@+id/rdoEditIsFemale"
+            android:layout_width="match_parent"
+            android:layout_height="153dp"
+            android:layout_marginEnd="50dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/btnSelectMan"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="46dp"
+                android:text="Man"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/btnSelectWoman"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="46dp"
+                android:text="Woman"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnSelectEveryone"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="46dp"
+                android:text="Everyone"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent" />
+        </RadioGroup>
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/chkMan"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_check_24"
+            app:layout_constraintStart_toEndOf="@+id/rdoEditIsFemale"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/chkWoman"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_check_24"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/chkEveryone"
+            app:layout_constraintStart_toEndOf="@+id/rdoEditIsFemale"
+            app:layout_constraintTop_toBottomOf="@+id/chkMan" />
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/chkEveryone"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_check_24"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rdoEditIsFemale" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

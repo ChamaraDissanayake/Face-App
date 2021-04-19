@@ -30,7 +30,7 @@ public class GetPhoneNumber extends AppCompatActivity {
         txtEnterPhone = findViewById(R.id.txtEnterPhone);
         codePicker = findViewById(R.id.countryCodePicker);
 
-        Bundle userData = getIntent().getExtras();
+//        Bundle userData = getIntent().getExtras();
 
         btnGetNumber.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +38,13 @@ public class GetPhoneNumber extends AppCompatActivity {
                 String pNumber = String.valueOf(txtEnterPhone.getText()).trim();
                 if(pNumber.length()>=9){
                     String phoneNumber = "+"+codePicker.getSelectedCountryCode()+pNumber;
-                    userData.putString("myNumber", phoneNumber);
-                    Intent intent = new Intent(GetPhoneNumber.this,GetPhoneOTP.class).putExtras(userData);
+//                    userData.putString("myNumber", phoneNumber);
+//                    Intent intent = new "myNumber", phoneNumber);
+                    Intent intent = new Intent(GetPhoneNumber.this,GetPhoneOTP.class).putExtra("myNumber", phoneNumber);
                     startActivity(intent);
                 } else {
                     txtEnterPhone.setError("Enter valid phone number");
                 }
-
             }
         });
 

@@ -20,7 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterAddImages extends RecyclerView.Adapter<AdapterAddImages.ViewHolder>{
     private static int RESULT_LOAD_IMAGE = 1;
-    private ArrayList<String> imgSet = new ArrayList<>();
+    private ArrayList<String> imgSet;
     private Context mContext;
 
     public AdapterAddImages(Context mContext, ArrayList<String> imgSet) {
@@ -37,35 +37,14 @@ public class AdapterAddImages extends RecyclerView.Adapter<AdapterAddImages.View
 
     @Override
     public void onBindViewHolder(@NonNull AdapterAddImages.ViewHolder holder, int position) {
+
         Glide.with(mContext)
                 .asBitmap()
                 .load(imgSet.get(position))
                 .into(holder.imgAdd);
-//        holder.chatName.setText(mChatName.get(position));
-//        holder.chatScrap.setText(mChatScrap.get(position));
-//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(),PrivateChat.class);
-//                intent.putExtra("ChatId", mChatName.get(position));
-//                intent.putExtra("ChatImage", mChatImage.get(position));
-//                v.getContext().startActivity(intent);
-//            }
-//        });
-//        holder.imgAdd.setImageBitmap(imgSet.get(position));
         holder.btnRemoveImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.i("TEST2", "Working"+ position);
-//                imgSet.remove(position);
-//                imgSet.add("");
-//                Log.i("TEST2", "image set: " +imgSet);
-//                Glide.with(mContext)
-//                        .asBitmap()
-//                        .load(imgSet.get(8))
-//                        .into(holder.imgAdd);
-//                //post imgSet to save photos
-//                Toast.makeText(mContext,"Successfully deleted",Toast.LENGTH_LONG).show();
                 alertDeleteImage(v.getContext(), position, holder);
             }
         });
@@ -110,12 +89,11 @@ public class AdapterAddImages extends RecyclerView.Adapter<AdapterAddImages.View
                     public void onClick(DialogInterface arg0, int arg1) {
                         imgSet.remove(position);
                         imgSet.add("");
-//                        Log.i("TEST2", "image set: " +imgSet);
                         Glide.with(mContext)
                                 .asBitmap()
                                 .load(imgSet.get(8))
                                 .into(holder.imgAdd);
-                //post imgSet to save photos
+                        setImageArray(imgSet);
                         Toast.makeText(mContext,"Successfully deleted",Toast.LENGTH_LONG).show();
                     }
                 });
@@ -127,5 +105,10 @@ public class AdapterAddImages extends RecyclerView.Adapter<AdapterAddImages.View
                     }
                 });
         alertDialogBuilder.show();
+    }
+
+    private void setImageArray(ArrayList<String> imageSet){
+        EditProfile editProfile = new EditProfile();
+        editProfile.setImgSet(imageSet);
     }
 }

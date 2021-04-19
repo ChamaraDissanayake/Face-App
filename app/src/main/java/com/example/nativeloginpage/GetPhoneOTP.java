@@ -23,6 +23,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class GetPhoneOTP extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class GetPhoneOTP extends AppCompatActivity {
     Button btnBack;
     TextView textViewPNumber, textViewResend;
     String phoneNumber, mVerificationId;
-    Bundle userData;
+//    Bundle userData;
     PhoneAuthProvider.ForceResendingToken mResendToken;
     PinView enterOTP;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -41,7 +42,7 @@ public class GetPhoneOTP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_phone_otp);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         progressDialog = new ProgressDialog(GetPhoneOTP.this);
         progressDialog.setMessage("Verification going on...");
@@ -55,8 +56,9 @@ public class GetPhoneOTP extends AppCompatActivity {
         textViewPNumber = findViewById(R.id.textViewPNumber);
         textViewResend = findViewById(R.id.textViewResend);
 
-        userData = getIntent().getExtras();
-        phoneNumber = userData.getString("myNumber");
+//        userData = getIntent().getExtras();
+//        phoneNumber = userData.getString("myNumber");
+        phoneNumber = getIntent().getStringExtra("myNumber");
         textViewPNumber.setText(phoneNumber);
 
         btnOTP.setOnClickListener(v -> {
@@ -97,7 +99,8 @@ public class GetPhoneOTP extends AppCompatActivity {
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
                 Toast.makeText(GetPhoneOTP.this,"Automatic verification failed" + e,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(GetPhoneOTP.this, GetPhoneNumber.class).putExtras(userData);
+//                Intent intent = new Intent(GetPhoneOTP.this, GetPhoneNumber.class).putExtras(userData);
+                Intent intent = new Intent(GetPhoneOTP.this, GetPhoneNumber.class);
                 startActivity(intent);
                 progressDialog.hide();
             }
@@ -160,8 +163,18 @@ public class GetPhoneOTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(GetPhoneOTP.this,"Verification successful",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(GetPhoneOTP.this, GetGender.class).putExtras(userData);
+//                            if(userData.getBoolean("isNewUser")){
+                            Tabs.setProfileNumber(String.valueOf(getIntent().getStringExtra("myNumber")));
+                            Intent intent;
+                            if(Tabs.getProfileIsNewUser()){
+//                                Intent intent = new Intent(GetPhoneOTP.this, GetGender.class).putExtras(userData);
+                                intent = new Intent(GetPhoneOTP.this, GetGender.class);
+                            }else {
+//                                Tabs.setProfileNumber(String.valueOf(userData.get("myNumber")));
+                                intent = new Intent(GetPhoneOTP.this, Settings.class);
+                            }
                             startActivity(intent);
+                            finish();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(GetPhoneOTP.this,"Verification failed:" + task.getException(),Toast.LENGTH_SHORT).show();

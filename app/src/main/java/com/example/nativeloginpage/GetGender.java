@@ -32,7 +32,7 @@ public class GetGender extends AppCompatActivity {
         rdoIsFemale = findViewById(R.id.rdoIsFemale);
         genderVisibility = findViewById(R.id.chkGenderVisibility);
 
-        Bundle userData = getIntent().getExtras();
+//        Bundle userData = getIntent().getExtras();
 //        String pNum = userData.getString("myNumber");
 //        String myOTP = userData.getString("myOTP");
 //
@@ -45,11 +45,14 @@ public class GetGender extends AppCompatActivity {
                 gender = findViewById(selectedId);
                 boolean isFemale;
                 isFemale = String.valueOf(gender.getText()).equals("WOMAN"); //Set boolean value without using if statement
-                userData.putBoolean("isFemale", isFemale);
-                userData.putBoolean("showGender", genderVisibility.isChecked());
-//                Toast.makeText(getApplicationContext(),"working "+ isFemale + ",show " + genderVisibility.isChecked(), Toast.LENGTH_SHORT).show();
+//                userData.putBoolean("isFemale", isFemale);
+//                userData.putBoolean("showGender", genderVisibility.isChecked());
 
-                Intent intent = new Intent(GetGender.this,GetUniversity.class).putExtras(userData);
+                Tabs.setProfileIsFemale(isFemale);
+                Tabs.setProfileShowGender(genderVisibility.isChecked());
+
+//                Intent intent = new Intent(GetGender.this,GetUniversity.class).putExtras(userData);
+                Intent intent = new Intent(GetGender.this,GetUniversity.class);
                 startActivity(intent);
             }
         });

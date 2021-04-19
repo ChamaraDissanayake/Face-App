@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -34,6 +37,9 @@ public class ProfilesCard {
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
+
+//    @View(R.id.view_pager)
+//    private ImageView profileImageView;
 
     @View(R.id.nameAgeTxt)
     private TextView nameAgeTxt;
@@ -80,8 +86,8 @@ public class ProfilesCard {
 //    @View(R.id.loutSlider)
 //    private LinearLayout loutSlider;
 //
-//    @View(R.id.rvImageSlider)
-//    private RecyclerView rvImageSlider;
+    @View(R.id.rvImageSlider)
+    private RecyclerView rvImageSlider;
 
 
 
@@ -106,15 +112,15 @@ public class ProfilesCard {
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
         al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-//        initRecycleView();
+        initRecycleView(0);
     }
-//
-//    private void initRecycleView(){
-//        RecyclerView recyclerView = (RecyclerView) rvImageSlider;
-//        AdapterSliderButton adapter = new AdapterSliderButton(mProfile.getPhotos());
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
-//    }
+
+    private void initRecycleView(int index){
+        RecyclerView recyclerView = (RecyclerView) rvImageSlider;
+        AdapterSliderButton adapter = new AdapterSliderButton(mProfile.getPhotos(),index);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
+    }
 
     @SuppressLint("SetTextI18n")
     @Resolve
@@ -126,7 +132,7 @@ public class ProfilesCard {
         int numberOfPhotos = mProfile.getPhotos().size();
         Glide.with(mContext).load(mProfile.getPhotos().get(0).toString()).into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + " " + mProfile.getAge());
-        locationNameTxt.setText(mProfile.getLocation());
+        locationNameTxt.setText(mProfile.getCity());
         txtDescription.setText(mProfile.getDescription());
         txtShareProfile.setText("SHARE " + mProfile.getName().toUpperCase() + "'S PROFILE");
         btnReport.setText("REPORT " + mProfile.getName().toUpperCase());
@@ -152,7 +158,7 @@ public class ProfilesCard {
             if(imageIndex<numberOfPhotos-1){
                 setImageIndex(imageIndex+1);
                 Glide.with(mContext).load(mProfile.getPhotos().get(imageIndex).toString()).into(profileImageView);
-//                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+                initRecycleView(imageIndex);
             }
         });
 
@@ -160,7 +166,7 @@ public class ProfilesCard {
             if(imageIndex>0){
                 setImageIndex(imageIndex-1);
                 Glide.with(mContext).load(mProfile.getPhotos().get(imageIndex).toString()).into(profileImageView);
-//                Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+                initRecycleView(imageIndex);
             }
         });
 

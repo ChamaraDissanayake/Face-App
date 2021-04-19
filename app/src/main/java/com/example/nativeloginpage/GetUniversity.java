@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class GetUniversity extends AppCompatActivity {
     LinearLayout btnGetUniversity;
     Button btnBack;
@@ -20,13 +22,13 @@ public class GetUniversity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_university);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btnGetUniversity = findViewById(R.id.btnGetUniversity);
         btnBack = findViewById(R.id.btnBack);
         btnSkip = findViewById(R.id.btnSkip);
         txtEnterUniversity = findViewById(R.id.txtEnterUniversity);
-        Bundle userData = getIntent().getExtras();
+//        Bundle userData = getIntent().getExtras();
 
 
         btnGetUniversity.setOnClickListener(new View.OnClickListener() {
@@ -34,8 +36,10 @@ public class GetUniversity extends AppCompatActivity {
             public void onClick(View v) {
                 String university = String.valueOf(txtEnterUniversity.getText()).trim();
                 if(university.length()>=2){
-                    userData.putString("myUniversity", String.valueOf(txtEnterUniversity.getText()));
-                    Intent intent = new Intent(GetUniversity.this,GetPassions.class).putExtras(userData);
+//                    userData.putString("myUniversity", String.valueOf(txtEnterUniversity.getText()));
+                    Tabs.setProfileUniversity(String.valueOf(txtEnterUniversity.getText()));
+//                    Intent intent = new Intent(GetUniversity.this,GetPassions.class).putExtras(userData);
+                    Intent intent = new Intent(GetUniversity.this,GetPassions.class);
                     startActivity(intent);
                 } else {
                     txtEnterUniversity.setError("Enter university or skip this step");
@@ -54,7 +58,8 @@ public class GetUniversity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GetUniversity.this,GetPassions.class).putExtras(userData);
+//                Intent intent = new Intent(GetUniversity.this,GetPassions.class).putExtras(userData);
+                Intent intent = new Intent(GetUniversity.this,GetPassions.class);
                 startActivity(intent);
             }
         });

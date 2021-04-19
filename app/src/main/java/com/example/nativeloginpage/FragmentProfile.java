@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +50,14 @@ public class FragmentProfile extends Fragment {
     public void onStart() {
         super.onStart();
         mContext = getContext();
-
         Objects.requireNonNull(getView()).findViewById(R.id.btnEditProfile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), EditProfile.class));
+            }
+        });
+
+        Objects.requireNonNull(getView()).findViewById(R.id.loutEditProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), EditProfile.class));
@@ -75,6 +82,7 @@ public class FragmentProfile extends Fragment {
         Glide.with(mContext).load(Tabs.getProfileImage()).into(profile_image);
         txtShowName.setText(Tabs.getProfileName());
         txtShowUniversity.setText(Tabs.getProfileUniversity());
+        Log.i("TEST2", "image" + Tabs.getProfileImage());
     }
 
     public static @Nullable List<MyProfile> loadMyProfile(Context context){

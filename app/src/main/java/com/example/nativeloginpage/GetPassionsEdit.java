@@ -1,6 +1,7 @@
 package com.example.nativeloginpage;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.apmem.tools.layouts.FlowLayout;
@@ -44,18 +46,20 @@ public class GetPassionsEdit extends AppCompatActivity {
         setContentView(R.layout.activity_get_passions_edit);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        getPassionsList(getApplicationContext());
+
         btnBack = findViewById(R.id.btnEditProfileBack);
         loutEditPassions = findViewById(R.id.loutEditPassions);
         txtSelectedCount = findViewById(R.id.txtSelectedCount);
         btnEditSkip = findViewById(R.id.btnEditSkip);
 
-        passions.add("Netflix");
-        passions.add("Coffee");
-        passions.add("Climbing");
-        passions.add("Gym");
-        passions.add("Fitness");
-        passions.add("Sports");
-        passions.add("Hill Climbing");
+//        passions.add("Netflix");
+//        passions.add("Coffee");
+//        passions.add("Climbing");
+//        passions.add("Gym");
+//        passions.add("Fitness");
+//        passions.add("Sports");
+//        passions.add("Hill Climbing");
 
         try{
             selectedPassions = getIntent().getStringArrayListExtra("myPassionsList");
@@ -64,16 +68,14 @@ public class GetPassionsEdit extends AppCompatActivity {
             Toast.makeText(GetPassionsEdit.this, "Error loading:"+ e, Toast.LENGTH_LONG).show();
         }
 
-        getPassions();
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(selectedPassions.size()>2){
                     updateProfileData();
                     Toast.makeText(GetPassionsEdit.this, "Updating Passions", Toast.LENGTH_LONG).show();
-//                    finish();
                     startActivity(new Intent(GetPassionsEdit.this, EditProfile.class));
+                    finish();
                 } else {
                     alertCreate();
                 }
@@ -88,7 +90,7 @@ public class GetPassionsEdit extends AppCompatActivity {
         });
     }
 
-    private void getPassions(){
+    private void setPassions(){
         for(int i =0; i<passions.size(); i++) {
             android.view.View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.passions_set_view, loutEditPassions, false);
             ToggleButton btnPassions = view.findViewById(R.id.btnPassion);
@@ -185,7 +187,7 @@ public class GetPassionsEdit extends AppCompatActivity {
 
     public void alertCreate(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GetPassionsEdit.this);
-        alertDialogBuilder.setMessage("Pick up at least 3 passions");
+        alertDialogBuilder.setMessage("Pick up at least 3 passions or skip");
         alertDialogBuilder.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -202,8 +204,28 @@ public class GetPassionsEdit extends AppCompatActivity {
             updateProfileData();
             Toast.makeText(GetPassionsEdit.this, "Updating Passions", Toast.LENGTH_LONG).show();
             startActivity(new Intent(GetPassionsEdit.this, EditProfile.class));
+            finish();
         } else {
             alertCreate();
         }
+    }
+
+    private void getPassionsList(Context context){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String url = "http://faceapp.vindana.com.au/api/v1/faceapp/getpassions";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    JSONArray array;
+                    try {
+                        array = new JSONArray(response);
+                        for(int i=0;i<array.length();i++){
+                            passions.add(array.getString(i));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    setPassions();
+                }, error -> Log.i("EVENT","fail"+error));
+        queue.add(stringRequest);
     }
 }

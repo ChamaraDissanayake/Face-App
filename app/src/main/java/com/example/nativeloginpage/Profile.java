@@ -26,6 +26,10 @@ public class Profile {
     @Expose
     private String location;
 
+    @SerializedName("city")
+    @Expose
+    private String city;
+
     @SerializedName("description")
     @Expose
     private String description;
@@ -96,14 +100,16 @@ public class Profile {
     public void setAge(String age) {
         this.age = age;
     }
+//
+//    public String getLocation() { return location; }
+//
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getCity() { return city; }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public void setCity(String city) { this.city = city; }
 
     public String getDescription() { return description; }
 

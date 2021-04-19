@@ -24,7 +24,7 @@ public class AdapterChatContent extends RecyclerView.Adapter<AdapterChatContent.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_content_view, parent, false);
-        AdapterChatContent.ViewHolder holder = new AdapterChatContent.ViewHolder(view);
+        AdapterChatContent.ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
@@ -45,7 +45,7 @@ public class AdapterChatContent extends RecyclerView.Adapter<AdapterChatContent.
         return mChatContent.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView receivedMessages, sentMessages;
         String chatId;
         public ViewHolder(@NonNull View itemView) {

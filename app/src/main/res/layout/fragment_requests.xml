@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    tools:context=".FragmentRequests"-->
-<!--    android:orientation="horizontal">-->
-
-<!--&lt;!&ndash;    <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/rvChats"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="match_parent"/>&ndash;&gt;-->
-
-<!--    <com.denzcoskun.imageslider.ImageSlider-->
-<!--        android:id="@+id/mySlider"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        app:iss_corner_radius="5" />-->
-
-<!--</RelativeLayout>-->
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    tools:context=".FragmentRequests">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentRequests"
+    android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvChats"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/mySlider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.viewpager.widget.ViewPager>
-
-        <LinearLayout
-            android:id="@+id/SliderDots"
-            android:layout_width="374dp"
-            android:layout_height="0dp"
-            android:layout_below="@+id/viewPager"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="190dp"
-            android:layout_height="692dp"
-            android:layout_weight="0.5"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="190dp"
-            android:layout_height="692dp"
-            android:layout_weight="0.5"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/viewPager"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:iss_corner_radius="5" />
 
 </RelativeLayout>
+
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/activity_main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:paddingBottom="16dp"-->
+<!--    android:paddingLeft="16dp"-->
+<!--    android:paddingRight="16dp"-->
+<!--    android:paddingTop="16dp"-->
+<!--    tools:context=".FragmentRequests">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <androidx.viewpager.widget.ViewPager-->
+<!--            android:id="@+id/viewPager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        </androidx.viewpager.widget.ViewPager>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/SliderDots"-->
+<!--            android:layout_width="374dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_below="@+id/viewPager"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnNext"-->
+<!--            android:layout_width="190dp"-->
+<!--            android:layout_height="692dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnBack"-->
+<!--            android:layout_width="190dp"-->
+<!--            android:layout_height="692dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/viewPager"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--</RelativeLayout>-->

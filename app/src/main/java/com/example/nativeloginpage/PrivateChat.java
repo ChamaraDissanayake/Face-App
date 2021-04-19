@@ -16,21 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.nativeloginpage.activities.OpponentsActivity;
+import com.example.nativeloginpage.activities.SplashActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrivateChat extends AppCompatActivity {
 
     private Button btnBack, btnSend, btnVideo;
-    private String chatId, chatImage;
+    private static String chatId, chatImage;
     private Intent intent;
     private CircleImageView civ;
-    private TextView ChatName;
+    private TextView chatName;
     private EditText sendMessage;
     private Context mContext;
     private ScrollView scrollView;
+    private static boolean isHangedUp;
+    private static boolean isOutgoing;
 
     private ArrayList<String> mChatId = new ArrayList<>();
     private ArrayList<String> mChatContent = new ArrayList<>();
@@ -39,21 +44,27 @@ public class PrivateChat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_chat);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
+        setIsHangedUp(false);
+        setIsOutgoing(false);
         mContext = getApplicationContext();
-        intent = getIntent();
         btnBack = findViewById(R.id.btnBack);
         btnSend = findViewById(R.id.btnSend);
         btnVideo = findViewById(R.id.btnVideo);
         civ = findViewById(R.id.chat_private_header_image);
         scrollView = findViewById(R.id.svMessages);
 
-        chatId = intent.getStringExtra("ChatId");
-        chatImage = intent.getStringExtra("ChatImage");
-        ChatName = findViewById(R.id.txtChatName);
+        OpponentsActivity.setCallerId(126815134); //set opponent chat id
+        intent = getIntent();
+        if(intent.hasExtra("ChatId")){
+            chatId = intent.getStringExtra("ChatId");
+            chatImage = intent.getStringExtra("ChatImage");
+        }
+
+        chatName = findViewById(R.id.txtChatName);
         sendMessage = findViewById(R.id.txtMessageSend);
-        ChatName.setText(chatId);
+        chatName.setText(chatId);
 
         Glide.with(mContext)
                 .asBitmap()
@@ -66,12 +77,11 @@ public class PrivateChat extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), Tabs.class);
-//                intent.putExtra("From", "Chat");
-//                startActivity(intent);
+                startActivity(new Intent(PrivateChat.this, Tabs.class).putExtra("From", "Chat"));
                 finish();
             }
         });
+
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,11 +99,14 @@ public class PrivateChat extends AppCompatActivity {
         btnVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mChatId.add("2");
-                mChatContent.add("Dummy test added");
-                initRecycleView();
-                scrollFix();
-                new Handler().postDelayed(() -> sendMessage.requestFocus(), 100);
+//                mChatId.add("2");
+//                mChatContent.add("Dummy test added");
+//                initRecycleView();
+//                scrollFix();
+//                new Handler().postDelayed(() -> sendMessage.requestFocus(), 100);
+                setIsOutgoing(true);
+                Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -117,7 +130,7 @@ public class PrivateChat extends AppCompatActivity {
         mChatContent.add("I'm ok");
 
         mChatId.add("1");
-        mChatContent.add("sgn dflskjgn dsfjkgn dfskjgsdf dfgdfsg dfs g fdg sdfgsdf gsdf  dfgsdfg sdfgsdfg dfsgdfs gds fg sdf gdsfgdsfg dfs g dsfg ds fg dsfgdsf g dsfg rtyfgbfgxb dfb fgb dfgb dfgb fg b ergt bdf s fbsdtgy f bgds g destg dfsb ds g srde gdfs bgv sdrg d bfs fgsr g dsfbg dfsg ers gff?");
+        mChatContent.add("AsyncTask enables proper and easy use of the UI thread. This class allows you to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.");
 
         mChatId.add("2");
         mChatContent.add("Where are you?");
@@ -166,5 +179,22 @@ public class PrivateChat extends AppCompatActivity {
                 scrollView.fullScroll(View.FOCUS_DOWN);
             }
         });
+    }
+
+    public static boolean getIsHangedUp() {
+        return isHangedUp;
+    }
+
+    public static void setIsHangedUp(boolean isHangedUp) { PrivateChat.isHangedUp = isHangedUp; }
+
+    public static boolean getIsOutgoing() { return isOutgoing; }
+
+    public static void setIsOutgoing(boolean isOutgoing) { PrivateChat.isOutgoing = isOutgoing; }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(PrivateChat.this, Tabs.class).putExtra("From", "Chat"));
+        finish();
     }
 }

@@ -143,6 +143,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtShowName" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loutEditProfile"
         android:layout_width="343dp"
         android:layout_height="59dp"
         android:layout_marginStart="24dp"

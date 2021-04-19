@@ -1,6 +1,5 @@
 package com.example.nativeloginpage;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,38 +13,42 @@ import java.util.ArrayList;
 public class AdapterSliderButton extends RecyclerView.Adapter<AdapterSliderButton.ViewHolder> {
 
     private ArrayList<String> mSliderButton = new ArrayList<>();
-    Button test;
+    int photoIndex;
 
-    public AdapterSliderButton(ArrayList<String> mSliderButton) {
+    public AdapterSliderButton(ArrayList<String> mSliderButton, int photoIndex) {
         this.mSliderButton = mSliderButton;
+        this.photoIndex = photoIndex;
     }
 
     @NonNull
     @Override
     public AdapterSliderButton.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_button_view, parent, false);
-        AdapterSliderButton.ViewHolder holder = new AdapterSliderButton.ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterSliderButton.ViewHolder holder, int position) {
+        int screenWidth = FragmentHome.getScreenWidth()-30;
+        int numberOfImages = mSliderButton.size();
+        int displayWidth = screenWidth/numberOfImages;
         int getColorWhite =  holder.btnSlider.getContext().getResources().getColor(R.color.white);
         int getColorTransparent = holder.btnSlider.getContext().getResources().getColor(R.color.half_transparent);
         holder.btnSlider.setBackgroundColor(getColorTransparent);
+        holder.btnSlider.setWidth(displayWidth);
 
-        if(position==0){
+        if(position==photoIndex){
             holder.btnSlider.setBackgroundColor(getColorWhite);
         }
-
-        holder.btnSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.btnSlider.setBackgroundColor(getColorWhite);
-                Log.i("TEST2", "onBindViewHolderOnClick ");
-
-            }
-        });
+//
+//        holder.btnSlider.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                holder.btnSlider.setBackgroundColor(getColorWhite);
+//                Log.i("TEST2", "onBindViewHolderOnClick ");
+//
+//            }
+//        });
 
     }
 

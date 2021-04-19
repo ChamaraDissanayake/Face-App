@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -49,29 +50,31 @@ public class EditProfile extends AppCompatActivity {
 
     private static final String ROOT_URL = "http://faceapp.vindana.com.au/api/v1/faceapp/imageUpload";
     private static final int REQUEST_PERMISSIONS = 100;
-    private static final int PICK_IMAGE_REQUEST =1 ;
+    private static final int PICK_IMAGE_REQUEST =1;
 //    private static int RESULT_LOAD_IMAGE = 1;
     private Context myContext;
 //    private MyProfile myProfile;
 //    FlowLayout loutSetImages;
-    private final ArrayList<String> imgSet = new ArrayList<>();
-    TextView txtMyDescription, txtMyPassions, txtMyJob, txtMyUniversity, txtMyCompany, txtMyCity;
+    private ArrayList<String> imgSet = new ArrayList<>();
+    EditText txtMyJob, txtMyUniversity, txtMyCompany, txtMyCity;
+    com.rey.material.widget.EditText txtMyDescription;
+    TextView txtMyPassions;
     Button btnEditProfileBack;
     RadioButton btnEditWoman, btnEditMan;
-    private boolean isFemale;
     String myPassions;
     ArrayList<String> selectedPassionsList = new ArrayList<String>();
     LinearLayout btnAddImage;
-    private Bitmap bitmap;
-    private String filePath;
-//    SwitchCompat tglBtnAge;
+    SwitchCompat btnShowDistance, btnShowAge;
+
+    public void setImgSet(ArrayList<String> imageSet) {
+        this.imgSet = imageSet;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
 
         myContext = getApplicationContext();
 
@@ -86,51 +89,16 @@ public class EditProfile extends AppCompatActivity {
         txtMyUniversity = findViewById(R.id.txtMyUniversity);
         txtMyCompany = findViewById(R.id.txtMyCompany);
         txtMyCity = findViewById(R.id.txtMyCity);
-//        tglBtnAge = findViewById(R.id.tglBtnAge);
-
-//        tglBtnAge.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(tglBtnAge.isChecked()){
-//                    tglBtnAge.setThumbTintList(Color.);
-//                }
-//            }
-//        });
-//        isFemale = Tabs.getProfileIsFemale();
-//        txtMyDescription.setText(Tabs.getProfileDescription());
-//        txtMyUniversity.setText(Tabs.getProfileUniversity());
-//        txtMyJob.setText(Tabs.getProfileJob());
-//        txtMyCompany.setText(Tabs.getProfileCompany());
-//        txtMyCity.setText(Tabs.getProfileCity());
-//        ArrayList<String> arr = Tabs.getProfilePassions();
-//
-//        try{
-//            myPassions = "";
-//            for(int i = 0; i < arr.size()-1; i++){
-//                myPassions = myPassions + arr.get(i) + ", ";
-//            }
-//            myPassions = myPassions + arr.get(arr.size()-1);
-//            txtMyPassions.setText(myPassions);
-//        } catch (Exception e){
-//            Log.i("TEST2", e.toString());
-//        }
-//        new Handler().postDelayed(() -> getDataFromDB(Tabs.getProfileId()), 5000);
+        btnShowDistance = findViewById(R.id.btnShowDistance);
+        btnShowAge = findViewById(R.id.btnShowAge);
         getDataFromDB(Tabs.getProfileId());
-        initImageSet();
-//        try{
-//            if(getIntent().hasExtra("myEditedPassions")) {
-//                selectedPassionsList.clear();
-//                selectedPassionsList = getIntent().getStringArrayListExtra("myEditedPassions");
-//            }
-//        } catch (Exception e){
-//            Toast.makeText(EditProfile.this, "Direct"+ e,Toast.LENGTH_LONG).show();
-//        }
 
         txtMyPassions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i("TEST2", "Clicked");
                 startActivity(new Intent(EditProfile.this, GetPassionsEdit.class).putStringArrayListExtra("myPassionsList",selectedPassionsList));
+                finish();
             }
         });
 
@@ -140,7 +108,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean isFull = true;
-                for(int i =0; i<imgSet.size(); i++){
+                for(int i =0; i<9; i++){
                     if(imgSet.get(i).equals("")){
                         isFull = false;
                         break;
@@ -166,9 +134,6 @@ public class EditProfile extends AppCompatActivity {
                         photoPickerIntent.setType("image/*");
                         startActivityForResult(photoPickerIntent, PICK_IMAGE_REQUEST);
                     }
-//                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-//                    photoPickerIntent.setType("image/*");
-//                    startActivityForResult(photoPickerIntent, RESULT_LOAD_IMAGE);
                 }else{
                     Toast.makeText(EditProfile.this,"Maximum limit reached", Toast.LENGTH_LONG).show();
                 }
@@ -182,40 +147,26 @@ public class EditProfile extends AppCompatActivity {
                 finish();
             }
         });
+//        setThumbTint(btnShowDistance, getResources().getColor(R.color.red));
+//        setTrackTint(btnShowDistance, getResources().getColor(R.color.light_red));
     }
-
-//    private void getImageFromAlbum() {
-//        try {
-//            Intent i = new Intent(Intent.ACTION_PICK,
-//                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//            startActivityForResult(i, RESULT_LOAD_IMAGE);
-//        } catch (Exception exp) {
-//            Log.i("Error", exp.toString());
-//        }
-//    }
 
 
     private void updateProfileData(){
         String postUrl = "http://faceapp.vindana.com.au/api/v1/faceapp/editprofile";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        JSONArray jsonPassions = new JSONArray(selectedPassionsList);
         JSONObject postData = new JSONObject();
         try {
             postData.put("fbId", Tabs.getProfileId());
             postData.put("showGender", false);
             postData.put("myUniversity", txtMyUniversity.getText());
-//            postData.put("myPassions", jsonPassions);
-            postData.put("myLocation", Tabs.getProfileLocation());      //Test data
-            postData.put("myAge", "35");                         //Need to remove
             postData.put("myJob", txtMyJob.getText());
             postData.put("myCompany", txtMyCompany.getText());
             postData.put("myCity", txtMyCity.getText());
             postData.put("myDescription", txtMyDescription.getText());
             postData.put("isFemale", isFemaleSelected());
-//            postData.put("isFemale", isFemaleSelected());                    //Need to add
-//            "myPhotos": ["<URL>”","<URL>"]                                    //Need to add
-//            boolean test = isFemaleSelected();
-//            Log.i("TEST2", "is female "+ test);
+            postData.put("showAge", !btnShowAge.isChecked());
+            postData.put("showDistance", !btnShowDistance.isChecked());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -224,6 +175,34 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("TEST2","response"+ String.valueOf(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Log.i("TEST2", "error " + error);
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    private void updatePhotos(){
+        String postUrl = "http://faceapp.vindana.com.au/api/v1/faceapp/updateimage";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONArray jsonImages = new JSONArray(imgSet);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("fbId", Tabs.getProfileId());
+            postData.put("imageList", jsonImages);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("TEST2","New photo list added"+ String.valueOf(response));
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -250,19 +229,18 @@ public class EditProfile extends AppCompatActivity {
 //        SwitchCompat
 //    }
 
-    private void initImageSet(){
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image2.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image3.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image4.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image5.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image6.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image7.jpg");
-        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image8.jpg");
-        imgSet.add("https://faceapp.s3.ap-south-1.amazonaws.com/upload/thumbnail/2021/02/c87e280c39_1613545554.jpg");
-        imageSetRecyclerView();
-//        setImageSet();
-    }
+//    private void initImageSet(){
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image2.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image3.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image4.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image5.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image6.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image7.jpg");
+//        imgSet.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image8.jpg");
+//        imgSet.add("https://faceapp.s3.ap-south-1.amazonaws.com/upload/thumbnail/2021/02/c87e280c39_1613545554.jpg");
+//        imageSetRecyclerView();
+//    }
 
     private void imageSetRecyclerView(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvAddImages);
@@ -300,16 +278,15 @@ public class EditProfile extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri picUri = data.getData();
-            filePath = getPath(picUri);
+            String filePath = getPath(picUri);
             if (filePath != null) {
                 try {
                     Log.i("filePath", String.valueOf(filePath));
-                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), picUri);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), picUri);
                     Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, 300, 500, false);
                     uploadBitmap(bitmap2);
-                    ImageView imgAdd = findViewById(R.id.imgAdd);
-                    imgAdd.setImageBitmap(bitmap2);
-//                    imageView.setImageBitmap(bitmap2);
+//                    ImageView imgAdd = findViewById(R.id.imgAdd);
+//                    imgAdd.setImageBitmap(bitmap2);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -322,12 +299,10 @@ public class EditProfile extends AppCompatActivity {
 
 //        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
 //            Uri selectedImage = data.getData();
-//            Log.i("TEST3", "image: " + selectedImage);
 //            ImageView imgAdd = findViewById(R.id.imgAdd);
 //            try {
 //                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 //                String image = getStringImage(bitmap);
-//                Log.i("TEST3", "image: " + image);
 //                imgAdd.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 240, 300, false));
 //            } catch (IOException e) {
 //                e.printStackTrace();
@@ -361,7 +336,6 @@ public class EditProfile extends AppCompatActivity {
     }
 
     private void uploadBitmap(final Bitmap bitmap) {
-
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, ROOT_URL,
                 new Response.Listener<NetworkResponse>() {
                     @Override
@@ -374,7 +348,6 @@ public class EditProfile extends AppCompatActivity {
                                 if(imgSet.get(i).equals("")){
                                     imgSet.remove(i);
                                     imgSet.add(i,obj.getString("imagePath"));
-                                    Log.i("TEST3", "imageSet: "+ imgSet);
                                     imageSetRecyclerView();
                                     break;
                                 }
@@ -401,18 +374,8 @@ public class EditProfile extends AppCompatActivity {
                 return params;
             }
         };
-
-        //adding the request to volley
         Volley.newRequestQueue(this).add(volleyMultipartRequest);
     }
-
-//    public String getStringImage(Bitmap bmp){
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//        byte[] imageBytes = baos.toByteArray();
-//        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-//        return encodedImage;
-//    }
 
     private void getDataFromDB(String fbId){
         String postUrl = "http://faceapp.vindana.com.au/api/v1/faceapp/getmyprofile";
@@ -429,11 +392,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("TEST2", String.valueOf(response));
-//                if (!response.has("error")){
-                    getExistingData(response);
-//                } else {
-//                    getDataFromFB();
-//                }
+                getExistingData(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -448,7 +407,6 @@ public class EditProfile extends AppCompatActivity {
 
     private void getExistingData(JSONObject response){
         try {
-//            ArrayList<String> arrayList = new ArrayList<String>();
             try {
                 selectedPassionsList.clear();
                 JSONArray jsonArray = response.getJSONArray("myPassions");
@@ -457,6 +415,26 @@ public class EditProfile extends AppCompatActivity {
                 }
             }catch (Exception e){
                 Log.i("TEST2", "Error in passions" + e);
+            }
+
+            try {
+                imgSet.clear();
+                JSONArray jsonArray = response.getJSONArray("imageList");
+                int imageCount = jsonArray.length();
+
+                for(int i = 0; i < imageCount; i++){
+                    imgSet.add(String.valueOf(jsonArray.getString(i)));
+                }
+
+                if (imageCount<9){
+                    int j = 9 - imageCount;
+                    for(int k=0; k<j; k++){
+                        imgSet.add("");
+                    }
+                }
+                imageSetRecyclerView();
+            }catch (Exception e){
+                Log.i("TEST2", "Error in photos" + e);
             }
 
             try{
@@ -490,23 +468,29 @@ public class EditProfile extends AppCompatActivity {
                 txtMyCity.setText(response.getString("myCity"));
             }
 
-            isFemale = response.getBoolean("isFemale");
+            boolean isFemale = response.getBoolean("isFemale");
             if(isFemale){
                 btnEditWoman.setChecked(true);
             }else {
                 btnEditMan.setChecked(true);
             }
 
+            boolean showAge = !response.getBoolean("showAge");
+            btnShowAge.setChecked(showAge); //User sees this as "Don't Show My Age" (Negative)
+
+            boolean showDistance = !response.getBoolean("showDistance");
+            btnShowDistance.setChecked(showDistance); //User sees this as "Make My Distance Invisible" (Negative)
+
         } catch (Exception e){
             Log.i("TEST2", String.valueOf(e));
         }
     }
 
-
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         Toast.makeText(EditProfile.this, "Updating",Toast.LENGTH_LONG).show();
         updateProfileData();
+//        updatePhotos(); //Uncomment when updatePhotos API fixed
     }
 }

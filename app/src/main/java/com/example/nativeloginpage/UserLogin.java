@@ -3,6 +3,7 @@ package com.example.nativeloginpage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ public class UserLogin extends AppCompatActivity {
     LoginButton login;
     ImageView fbProfilePicture;
     CallbackManager callbackManager;
-    Bundle userData;
+//    Bundle userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,18 @@ public class UserLogin extends AppCompatActivity {
         login = (LoginButton) findViewById(R.id.login);
         fbProfilePicture = findViewById(R.id.fbProfilePicture);
         login.setPermissions(Collections.singletonList(EMAIL));
-        userData = new Bundle();
+//        userData = new Bundle();
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
         callbackManager = CallbackManager.Factory.create();
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("TEST2", "button working");
+            }
+        });
         login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -77,7 +84,6 @@ public class UserLogin extends AppCompatActivity {
         });
 
         if(isLoggedIn){
-//            getDataFromFB();
             getDataFromDB(accessToken.getUserId());
         }
     }
@@ -90,9 +96,8 @@ public class UserLogin extends AppCompatActivity {
 
     public void fbLoginSuccess() {
         Toast.makeText(this,"Login success with Facebook",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(UserLogin.this, GetPhoneNumber.class).putExtras(userData);
+        Intent intent = new Intent(UserLogin.this, GetPhoneNumber.class);
         startActivity(intent);
-//        finish();
     }
 
     public void getDataFromFB(){
@@ -113,17 +118,24 @@ public class UserLogin extends AppCompatActivity {
                             String profilePicUrl = null;
                             if (data.has("picture")) {
                                 profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
+                                Log.i("TEST2", "Image from fb: " + profilePicUrl);
                                 Glide.with(UserLogin.this).load(profilePicUrl).into(fbProfilePicture);
                             }
                             if (data.has("email")) {
                                 myEmail = data.getString("email");
                             }
-                            userData.putString("fbId", myId);
-                            userData.putString("myName", myName);
-                            userData.putString("myAge", myAge);
-                            userData.putString("myEmail", myEmail);
-                            userData.putString("myProfileImage", profilePicUrl);
-                            userData.putBoolean("isNewUser", true);
+//                            userData.putString("fbId", myId);
+                            Tabs.setProfileId(myId);
+//                            userData.putString("myName", myName);
+                            Tabs.setProfileName(myName);
+//                            userData.putString("myAge", myAge);
+                            Tabs.setProfileAge(myAge);
+//                            userData.putString("myEmail", myEmail);
+                            Tabs.setProfileEmail(myEmail);
+//                            userData.putString("myProfileImage", profilePicUrl);
+                            Tabs.setProfileImage(profilePicUrl);
+//                            userData.putBoolean("isNewUser", true);
+                            Tabs.setProfileIsNewUser(true);
                             fbLoginSuccess();
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "Login Failed: "+e,Toast.LENGTH_SHORT).show();
@@ -171,24 +183,40 @@ public class UserLogin extends AppCompatActivity {
                 myPassions.add(String.valueOf(arr.getString(i)));
             }
 
-            userData.putString("fbId", response.getString("fbId"));
-            userData.putString("myName", response.getString("myName"));
-            userData.putString("myAge", response.getString("myAge"));
-            userData.putString("myEmail", response.getString("myEmail"));
-            userData.putString("myProfileImage", response.getString("myProfileImage"));
-            userData.putString("myUniversity", response.getString("myUniversity"));
-            userData.putBoolean("isFemale", response.getBoolean("isFemale"));
-            userData.putBoolean("showGender", response.getBoolean("showGender"));
-            userData.putString("myNumber", response.getString("myNumber"));
-            userData.putString("myDescription", response.getString("myDescription"));
-            userData.putString("myJob", response.getString("myJob"));
-            userData.putString("myCompany", response.getString("myCompany"));
-            userData.putString("myCity", response.getString("myCity"));
-            userData.putStringArrayList("myPassions",myPassions);
-            userData.putBoolean("isNewUser", false);
+//            userData.putString("fbId", response.getString("fbId"));
+            Tabs.setProfileId(response.getString("fbId"));
+//            userData.putString("myName", response.getString("myName"));
+            Tabs.setProfileName(response.getString("myName"));
+//            userData.putString("myAge", response.getString("myAge"));
+            Tabs.setProfileAge(response.getString("myAge"));
+//            userData.putString("myEmail", response.getString("myEmail"));
+            Tabs.setProfileEmail(response.getString("myEmail"));
+//            userData.putString("myProfileImage", response.getString("myProfileImage"));
+            Tabs.setProfileImage(response.getString("myProfileImage"));
+//            userData.putString("myUniversity", response.getString("myUniversity"));
+            Tabs.setProfileUniversity(response.getString("myUniversity"));
+//            userData.putBoolean("isFemale", response.getBoolean("isFemale"));
+            Tabs.setProfileIsFemale(response.getBoolean("isFemale"));
+//            userData.putBoolean("showGender", response.getBoolean("showGender"));
+            Tabs.setProfileShowGender(response.getBoolean("showGender"));
+//            userData.putString("myNumber", response.getString("myNumber"));
+            Tabs.setProfileNumber(response.getString("myNumber"));
+//            userData.putString("myDescription", response.getString("myDescription"));
+            Tabs.setProfileDescription(response.getString("myDescription"));
+//            userData.putString("myJob", response.getString("myJob"));
+            Tabs.setProfileJob(response.getString("myJob"));
+//            userData.putString("myCompany", response.getString("myCompany"));
+            Tabs.setProfileCompany(response.getString("myCompany"));
+//            userData.putString("myCity", response.getString("myCity"));
+            Tabs.setProfileImage(response.getString("myProfileImage"));
+//            userData.putStringArrayList("myPassions",myPassions);
+            Tabs.setProfilePassions(myPassions);
+//            userData.putBoolean("isNewUser", false);
+            Tabs.setProfileIsNewUser(false);
 
-            Intent intent = new Intent(UserLogin.this, Tabs.class).putExtras(userData);
+            Intent intent = new Intent(UserLogin.this, GetLocation.class);
             startActivity(intent);
+
         } catch (Exception e){
             Log.i("TEST2", String.valueOf(e));
         }

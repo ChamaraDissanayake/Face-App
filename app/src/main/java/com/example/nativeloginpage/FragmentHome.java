@@ -37,9 +37,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class FragmentHome extends Fragment {
+    private static int screenWidth;
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
-    public static String profileList; //Uncomment this when get data from service call
+    public static String profileList;
 //    public String getProfileData;
     public static ProgressDialog pgd;
     private static FloatingActionButton btnBoost, btnRewind;
@@ -49,6 +50,7 @@ public class FragmentHome extends Fragment {
 //    Button btnMinimize;
 //    boolean tabVisibility;
 //    110412007695746
+
 
     public FragmentHome() { }
 
@@ -87,7 +89,7 @@ public class FragmentHome extends Fragment {
         mContext = getContext();
         int bottomMargin = dpToPx(160);
         Point windowSize = getDisplaySize(Objects.requireNonNull(getActivity()).getWindowManager());
-
+        screenWidth = windowSize.x;
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
@@ -114,9 +116,11 @@ public class FragmentHome extends Fragment {
             showFabButtons();
         });
 
-        Objects.requireNonNull(getView()).findViewById(R.id.btnProfile).setOnClickListener(v ->
-            Log.i("TEST", "Button is working"
-        ));
+        Objects.requireNonNull(getView()).findViewById(R.id.btnProfile).setOnClickListener(v -> {
+            Log.i("TEST", "Chat id " + Tabs.getProfileChatId());
+//            Intent intent = new Intent(getContext(), SplashActivity.class);
+//            startActivity(intent);
+        });
 
         btnBoost = getView().findViewById(R.id.btnBoost);
         btnRewind = getView().findViewById(R.id.btnRewind);
@@ -136,7 +140,6 @@ public class FragmentHome extends Fragment {
 
     public void getProfileData(Context context){
         RequestQueue queue = Volley.newRequestQueue(context);
-//        String url = "http://faceapp.vindana.com.au/api/v1/faceapp/getprofiles";
         String url = "http://faceapp.vindana.com.au/api/v1/faceapp/getprofiles?fbId="+Tabs.getProfileId();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 response -> {
@@ -159,13 +162,13 @@ public class FragmentHome extends Fragment {
             JSONArray array = new JSONArray(profileList);
 //            JSONArray array = new JSONArray(loadJSONFromAsset(context, "profiles.json"));
 
-            List<Profile> profileList = new ArrayList<>();
+            List<Profile> profilesList = new ArrayList<>();
             for(int i=0;i<array.length();i++){
                 Profile profile = gson.fromJson(array.getString(i), Profile.class);
-                profileList.add(profile);
+                profilesList.add(profile);
             }
             pgd.hide();
-            return profileList;
+            return profilesList;
         }catch (Exception e){
             e.printStackTrace();
             pgd.hide();
@@ -218,6 +221,8 @@ public class FragmentHome extends Fragment {
         btnBoost.show();
         btnRewind.show();
     }
-}
 
-//com.android.volley.ServerError
+    public static int getScreenWidth() {
+        return screenWidth;
+    }
+}
