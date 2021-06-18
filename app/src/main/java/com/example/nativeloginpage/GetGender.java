@@ -31,6 +31,7 @@ public class GetGender extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         rdoIsFemale = findViewById(R.id.rdoIsFemale);
         genderVisibility = findViewById(R.id.chkGenderVisibility);
+        genderVisibility.setChecked(true);
 
 //        Bundle userData = getIntent().getExtras();
 //        String pNum = userData.getString("myNumber");

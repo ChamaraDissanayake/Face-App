@@ -19,15 +19,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder>{
 
-    private ArrayList<String> mChatImage = new ArrayList<>();
-    private ArrayList<String> mChatName = new ArrayList<>();
-    private ArrayList<String> mChatScrap = new ArrayList<>();
-    private Context mContext;
+    private final ArrayList<String> mChatImage;
+    private final ArrayList<String> mChatName;
+    private final ArrayList<String> mChatScrap;
+    private final ArrayList<String> mChatOpponentId;
+    private final Context mContext;
 
-    public AdapterChat(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap) {
+
+    public AdapterChat(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatScrap, ArrayList<String> mChatOpponentId) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
         this.mChatScrap = mChatScrap;
+        this.mChatOpponentId = mChatOpponentId;
         this.mContext = mContext;
     }
 
@@ -52,8 +55,9 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),PrivateChat.class);
-                intent.putExtra("ChatId", mChatName.get(position));
+                intent.putExtra("ChatName", mChatName.get(position));
                 intent.putExtra("ChatImage", mChatImage.get(position));
+                intent.putExtra("ChatId", mChatOpponentId.get(position));
                 v.getContext().startActivity(intent);
             }
         });

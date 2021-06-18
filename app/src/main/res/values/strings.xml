@@ -20,7 +20,7 @@
     <string name="my_university_is">My university is</string>
     <string name="university_description">This is how it will appear in Face App, and you will not be able to change it.</string>
     <string name="university_name">University Name</string>
-    <string name="ask_location">You\'ll need to enable your \n location \n in order to use Face App</string>
+    <string name="ask_location">It is vital to enable your \n location to use Face App</string>
     <string name="location_permission_explain">Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
     <string name="verify_phone_number">Verify a phone number to help secure account</string>
     <string name="Going_global">Going global will allow you to see people nearby and from around the world</string>
@@ -266,4 +266,6 @@
     <string name="app_info_title">App Info</string>
     <string name="app_info_qa_verion">QA version:</string>
     <string name="connecting">Connecting...</string>
+    <string name="my_birthday_is">My Birthday is</string>
+    <string name="passions_description">This is how it will appear in your profile, You can choose five passions to show, and you must choose at least three passions to continue. You also can skip this for now and add later from settings</string>
 </resources>

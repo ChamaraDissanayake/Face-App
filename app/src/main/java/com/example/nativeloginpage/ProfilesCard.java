@@ -13,6 +13,12 @@ import android.widget.ToggleButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -26,6 +32,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
 import org.apmem.tools.layouts.FlowLayout;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -126,7 +133,8 @@ public class ProfilesCard {
     @Resolve
     private void onResolved(){
         Log.d("EVENT","onResolved");
-        initPhotoSet();
+        initRecycleView(0);
+//        initPhotoSet();
 //        int numberOfPhotos = al.size();
 //        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
         int numberOfPhotos = mProfile.getPhotos().size();
@@ -137,7 +145,7 @@ public class ProfilesCard {
         txtShareProfile.setText("SHARE " + mProfile.getName().toUpperCase() + "'S PROFILE");
         btnReport.setText("REPORT " + mProfile.getName().toUpperCase());
         if(mProfile.isFemale()){
-            sex.setText("Women");
+            sex.setText("Woman");
         } else {
             sex.setText("Man");
         }
@@ -224,9 +232,39 @@ public class ProfilesCard {
             loutPassions.addView(view);
         }
     }
+
+    private void likeState(int status){
+        String postUrl = "http://faceapp.vindana.com.au/api/v1/faceapp/setlike";
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("fbId", Tabs.getProfileId());
+            postData.put("endId", mProfile.getIdentity());
+            postData.put("status", status); // (int) 1 for like, 2 for unlike
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("TEST2","response"+ String.valueOf(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Log.i("TEST2", "error " + error);
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
     @SwipeOut
     private void onSwipedOut(){
-        Log.d("EVENT", "onSwipedOut");
+        Log.d("EVENT", "onSwipedOut" + mProfile.getIdentity());
+        likeState(2);
     }
 
     @SwipeCancelState
@@ -235,7 +273,10 @@ public class ProfilesCard {
     }
 
     @SwipeIn
-    private void onSwipeIn() throws JSONException { Log.d("EVENT", "onSwipedIn"); }
+    private void onSwipeIn() throws JSONException {
+        Log.d("EVENT", "onSwipedIn" + mProfile.getIdentity());
+        likeState(1);
+    }
 
     @SwipeInState
     private void onSwipeInState(){

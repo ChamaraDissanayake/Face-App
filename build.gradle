@@ -32,7 +32,7 @@ ext {
     qbSdkVersion = '3.9.2'
 
     //Firebase
-    firebaseCoreVersion = '18.0.3'
+    firebaseCoreVersion = '19.0.0'
 
     //RobotoTextView
     robotoTextViewVersion = '4.0.0'

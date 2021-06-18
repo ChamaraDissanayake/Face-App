@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.nativeloginpage.FragmentChat;
 import com.example.nativeloginpage.FragmentHome;
 import com.example.nativeloginpage.FragmentProfile;
-import com.example.nativeloginpage.FragmentRequests;
 import com.example.nativeloginpage.R;
 
 /**
@@ -22,7 +21,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{
-            R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4};
+//            R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4};
+            R.string.tab_text_1, R.string.tab_text_3, R.string.tab_text_4};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -38,15 +38,23 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 fragment = new FragmentHome();
                 break;
+
             case 1:
-                fragment = new FragmentRequests();
-                break;
-            case 2:
                 fragment = new FragmentChat();
                 break;
-            case 3:
+            case 2:
                 fragment = new FragmentProfile();
                 break;
+
+//                case 1:
+//                fragment = new FragmentRequests();
+//                break;
+//            case 2:
+//                fragment = new FragmentChat();
+//                break;
+//            case 3:
+//                fragment = new FragmentProfile();
+//                break;
         }
         return fragment;
     }
@@ -59,7 +67,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
 }

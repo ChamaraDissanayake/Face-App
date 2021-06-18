@@ -51,6 +51,7 @@ public class EditProfile extends AppCompatActivity {
     private static final String ROOT_URL = "http://faceapp.vindana.com.au/api/v1/faceapp/imageUpload";
     private static final int REQUEST_PERMISSIONS = 100;
     private static final int PICK_IMAGE_REQUEST =1;
+//    public ProgressDialog pgdImageupload;
 //    private static int RESULT_LOAD_IMAGE = 1;
     private Context myContext;
 //    private MyProfile myProfile;
@@ -75,6 +76,13 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+//        pgdImageupload = new ProgressDialog(EditProfile.this);
+//        pgdImageupload.setMessage("Image is uploading...");
+//        pgdImageupload.setIndeterminate(false);
+//        pgdImageupload.setCancelable(false);
+//        pgdImageupload.show();
+
 
         myContext = getApplicationContext();
 
@@ -115,7 +123,6 @@ public class EditProfile extends AppCompatActivity {
                     }
                 }
                 if(!isFull){
-
                     if ((ContextCompat.checkSelfPermission(getApplicationContext(),
                             Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(getApplicationContext(),
                             Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
@@ -275,7 +282,6 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri picUri = data.getData();
             String filePath = getPath(picUri);
@@ -296,7 +302,7 @@ public class EditProfile extends AppCompatActivity {
                 Toast.makeText(EditProfile.this,"no image selected", Toast.LENGTH_LONG).show();
             }
         }
-
+//        pgdImageupload.hide();
 //        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
 //            Uri selectedImage = data.getData();
 //            ImageView imgAdd = findViewById(R.id.imgAdd);
@@ -344,6 +350,7 @@ public class EditProfile extends AppCompatActivity {
                             JSONObject obj = new JSONObject(new String(response.data));
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             Toast.makeText(getApplicationContext(), obj.getString("imagePath"), Toast.LENGTH_LONG).show();
+                            Log.i("TEST2",obj.getString("imagePath"));
                             for(int i =0; i<imgSet.size(); i++){
                                 if(imgSet.get(i).equals("")){
                                     imgSet.remove(i);
@@ -476,6 +483,7 @@ public class EditProfile extends AppCompatActivity {
             }
 
             boolean showAge = !response.getBoolean("showAge");
+            Tabs.setDoNotShowAge(!showAge);
             btnShowAge.setChecked(showAge); //User sees this as "Don't Show My Age" (Negative)
 
             boolean showDistance = !response.getBoolean("showDistance");
@@ -491,6 +499,6 @@ public class EditProfile extends AppCompatActivity {
         super.onDestroy();
         Toast.makeText(EditProfile.this, "Updating",Toast.LENGTH_LONG).show();
         updateProfileData();
-//        updatePhotos(); //Uncomment when updatePhotos API fixed
+        updatePhotos(); //Uncomment when updatePhotos API fixed
     }
 }

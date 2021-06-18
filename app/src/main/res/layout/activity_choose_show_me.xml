@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="46dp"
-                android:text="Man"
+                android:text="Men"
                 android:background="@drawable/radio_selector"
                 android:button="@android:color/transparent"
                 android:checked="true" />
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="46dp"
-                android:text="Woman"
+                android:text="Women"
                 android:background="@drawable/radio_selector"
                 android:button="@android:color/transparent" />
 

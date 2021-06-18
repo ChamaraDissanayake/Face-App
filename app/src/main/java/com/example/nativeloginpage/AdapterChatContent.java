@@ -31,7 +31,7 @@ public class AdapterChatContent extends RecyclerView.Adapter<AdapterChatContent.
     @Override
     public void onBindViewHolder(@NonNull AdapterChatContent.ViewHolder holder, int position) {
         holder.chatId = mChatId.get(position);
-        if(holder.chatId.equals("1")){
+        if(holder.chatId.equals(Tabs.getProfileId())){
             holder.sentMessages.setText(mChatContent.get(position));
             holder.receivedMessages.setVisibility(View.GONE);
         } else {

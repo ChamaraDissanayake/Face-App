@@ -1,39 +1,25 @@
 package com.example.nativeloginpage;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.interfaces.ItemClickListener;
-import com.denzcoskun.imageslider.models.SlideModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentRequests extends Fragment {
 
-    View v;
-    Context mContext;
+//    View v;
+//    Context mContext;
 //    private ArrayList<String> mChatImage = new ArrayList<>();
 //    private ArrayList<String> mChatName = new ArrayList<>();
-    private ArrayList<String> al;
-
-    ViewPager viewPager;
-    LinearLayout sliderDotsPanel;
-    private int dotsCount;
-    private ImageView[] dots;
-    Button btnNext, btnBack;
+//    private ArrayList<String> al;
+//
+//    ViewPager viewPager;
+//    LinearLayout sliderDotsPanel;
+//    private int dotsCount;
+//    private ImageView[] dots;
+//    Button btnNext, btnBack;
 
     public FragmentRequests() { }
 
@@ -55,22 +41,22 @@ public class FragmentRequests extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        v=getView();
-        ImageSlider imageSlider = v.findViewById(R.id.mySlider);
-
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg", ScaleTypes.CENTER_CROP));
-        imageSlider.setImageList(slideModels);
-
-        imageSlider.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onItemSelected(int i) {
-                Log.i("TEST2", "clicked "+ i);
-            }
-        });
+//        v=requireView();
+//        ImageSlider imageSlider = v.findViewById(R.id.mySlider);
+//
+//        List<SlideModel> slideModels = new ArrayList<>();
+//        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg", ScaleTypes.CENTER_CROP));
+//        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg", ScaleTypes.CENTER_CROP));
+//        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg", ScaleTypes.CENTER_CROP));
+//        slideModels.add(new SlideModel("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg", ScaleTypes.CENTER_CROP));
+//        imageSlider.setImageList(slideModels);
+//
+//        imageSlider.setItemClickListener(new ItemClickListener() {
+//            @Override
+//            public void onItemSelected(int i) {
+//                Log.i("TEST2", "clicked "+ i);
+//            }
+//        });
     }
 
 //    private void initImageBitmapsNew(){
@@ -226,13 +212,13 @@ public class FragmentRequests extends Fragment {
 //            }
 //        });
 //    }
-
-    private void initPhotoSet(){
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-
-
-    }
+//
+//    private void initPhotoSet(){
+//        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
+//        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
+//        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
+//        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
+//
+//
+//    }
 }

@@ -21,20 +21,21 @@ public class AdapterChatHorizontal extends RecyclerView.Adapter<AdapterChatHoriz
 
     private ArrayList<String> mChatImage = new ArrayList<>();
     private ArrayList<String> mChatName = new ArrayList<>();
-    private Context mContext;
+    private ArrayList<String> mChatOpponentId = new ArrayList<>();
+    private final Context mContext;
 
-    public AdapterChatHorizontal(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName) {
+    public AdapterChatHorizontal(Context mContext, ArrayList<String> mChatImage, ArrayList<String> mChatName, ArrayList<String> mChatOpponentId) {
         this.mChatImage = mChatImage;
         this.mChatName = mChatName;
         this.mContext = mContext;
+        this.mChatOpponentId = mChatOpponentId;
     }
 
     @NonNull
     @Override
     public AdapterChatHorizontal.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_list_view_new, parent, false);
-        AdapterChatHorizontal.ViewHolder holder = new AdapterChatHorizontal.ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -49,9 +50,12 @@ public class AdapterChatHorizontal extends RecyclerView.Adapter<AdapterChatHoriz
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),PrivateChat.class);
-                intent.putExtra("ChatId", mChatName.get(position));
-                intent.putExtra("ChatImage", mChatImage.get(position));
-                v.getContext().startActivity(intent);
+                if(!mChatOpponentId.get(position).equals("0")){
+                    intent.putExtra("ChatId", mChatOpponentId.get(position));
+                    intent.putExtra("ChatImage", mChatImage.get(position));
+                    intent.putExtra("ChatName", mChatName.get(position));
+                    v.getContext().startActivity(intent);
+                }
             }
         });
     }
@@ -61,7 +65,7 @@ public class AdapterChatHorizontal extends RecyclerView.Adapter<AdapterChatHoriz
         return mChatName.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView chatImage;
         TextView chatName;
         ConstraintLayout parentLayout;

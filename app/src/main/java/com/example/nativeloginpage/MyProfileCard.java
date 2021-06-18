@@ -34,19 +34,14 @@ import org.apmem.tools.layouts.FlowLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 @SuppressLint("NonConstantResourceId")
 @Layout(R.layout.profiles_card_view)
-public class ProfilesCard {
+public class MyProfileCard {
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
-
-//    @View(R.id.view_pager)
-//    private ImageView profileImageView;
 
     @View(R.id.nameAgeTxt)
     private TextView nameAgeTxt;
@@ -62,6 +57,9 @@ public class ProfilesCard {
 
     @View(R.id.imageFooter)
     private LinearLayout imageFooter;
+
+    @View(R.id.loutShareProfile)
+    private LinearLayout loutShareProfile;
 
     @View(R.id.loutProfileDetails)
     private LinearLayout loutProfileDetails;
@@ -81,18 +79,12 @@ public class ProfilesCard {
     @View(R.id.txtDescription)
     private TextView txtDescription;
 
-    @View(R.id.txtShareProfile)
-    private TextView txtShareProfile;
-
     @View(R.id.btnReport)
     private Button btnReport;
 
     @View(R.id.loutPassions)
     private FlowLayout loutPassions;
 
-//    @View(R.id.loutSlider)
-//    private LinearLayout loutSlider;
-//
     @View(R.id.rvImageSlider)
     private RecyclerView rvImageSlider;
 
@@ -100,27 +92,14 @@ public class ProfilesCard {
 
     private final Profile mProfile;
     private final Context mContext;
-    private static SwipePlaceHolderView mSwipeView;
-    private ArrayList<String> al;
     private int imageIndex;
-//    private static Button btnSlider;
 
-    public ProfilesCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
+    public MyProfileCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
         mContext = context;
         mProfile = profile;
-        mSwipeView = swipeView;
         imageIndex = 0;
-
-        al = new ArrayList<>();
     }
 
-    private void initPhotoSet(){
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.1.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.2.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.3.jpg");
-        al.add("https://vu-content.s3-ap-southeast-1.amazonaws.com/uploads/app/faceapp/Image1.4.jpg");
-        initRecycleView(0);
-    }
 
     private void initRecycleView(int index){
         RecyclerView recyclerView = (RecyclerView) rvImageSlider;
@@ -134,33 +113,27 @@ public class ProfilesCard {
     private void onResolved(){
         Log.d("EVENT","onResolved");
         initRecycleView(0);
-//        initPhotoSet();
-//        int numberOfPhotos = al.size();
-//        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
         int numberOfPhotos = mProfile.getPhotos().size();
         Glide.with(mContext).load(mProfile.getPhotos().get(0).toString()).into(profileImageView);
+
+        loutProfileDetails.setVisibility(android.view.View.VISIBLE);
+        imageFooter.setVisibility(android.view.View.GONE);
+        btnMinimize.setVisibility(android.view.View.VISIBLE);
+        loutShareProfile.setVisibility(android.view.View.GONE);
+        btnReport.setVisibility(android.view.View.GONE);
+
         nameAgeTxt.setText(mProfile.getName() + " " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getCity());
         txtDescription.setText(mProfile.getDescription());
-        txtShareProfile.setText("SHARE " + mProfile.getName().toUpperCase() + "'S PROFILE");
-        btnReport.setText("REPORT " + mProfile.getName().toUpperCase());
+
         if(mProfile.isFemale()){
             sex.setText("Woman");
         } else {
             sex.setText("Man");
         }
-//        txtNo.setText(mProfile.getIdentity());
-//        for (int i=0; i<al.size(); i++){
-//            Log.i("TEST2", al.get(i));
-//            Glide.with(mContext).load(al.get(i)).into(profileImageView);
-//        }
-//        Glide.with(mContext).load(al.get(imageIndex)).into(profileImageView);
+
         txtNameAgeProfile.setText(mProfile.getName() + ", " + mProfile.getAge());
         txtUniversity.setText(mProfile.getUniversity());
-
-//        for(int i=0; i<numberOfPhotos; i++){
-//            setSliderButtons();
-//        }
 
         next.setOnClickListener(v -> {
             if(imageIndex<numberOfPhotos-1){
@@ -178,50 +151,27 @@ public class ProfilesCard {
             }
         });
 
-        imageFooter.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                loutProfileDetails.setVisibility(android.view.View.VISIBLE);
-                imageFooter.setVisibility(android.view.View.GONE);
-                btnMinimize.setVisibility(android.view.View.VISIBLE);
-                mSwipeView.lockViews();
-                Tabs.showTabBar(false);
-                FragmentHome.hideFabButtons();
-            }
-        });
-
-        btnMinimize.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                loutProfileDetails.setVisibility(android.view.View.GONE);
-                imageFooter.setVisibility(android.view.View.VISIBLE);
-                btnMinimize.setVisibility(android.view.View.GONE);
-                mSwipeView.unlockViews();
-                Tabs.showTabBar(true);
-                FragmentHome.showFabButtons();
-            }
-        });
-        getPassions();
-    }
-
-    public static void setViewToSwipe(){
-//        loutProfileDetailsStatic.setVisibility(android.view.View.GONE);
-        mSwipeView.unlockViews();
-        Tabs.showTabBar(true);
-    }
-
-//    private void setSliderButtons(){
-//        android.view.View view = LayoutInflater.from(mContext).inflate(R.layout.slider_button_view, loutSlider, true);
-//        Button btnSlider = view.findViewById(R.id.btnSlider);
-//
-//        btnSlider.setOnClickListener(new android.view.View.OnClickListener() {
+//        imageFooter.setOnClickListener(new android.view.View.OnClickListener() {
 //            @Override
 //            public void onClick(android.view.View v) {
-//                int test =  btnSlider.getContext().getResources().getColor(R.color.white);
-//                btnSlider.setBackgroundColor(test);
+//                loutProfileDetails.setVisibility(android.view.View.VISIBLE);
+//                imageFooter.setVisibility(android.view.View.GONE);
+//                btnMinimize.setVisibility(android.view.View.VISIBLE);
 //            }
 //        });
-//    }
+
+//        btnMinimize.setOnClickListener(new android.view.View.OnClickListener() {
+//            @Override
+//            public void onClick(android.view.View v) {
+//                loutProfileDetails.setVisibility(android.view.View.GONE);
+//                imageFooter.setVisibility(android.view.View.VISIBLE);
+//                btnMinimize.setVisibility(android.view.View.GONE);
+//                Tabs.showTabBar(true);
+//                FragmentHome.showFabButtons();
+//            }
+//        });
+        getPassions();
+    }
 
     private void getPassions(){
         for(int i =0; i<mProfile.getPassions().size(); i++) {

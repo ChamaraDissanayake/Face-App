@@ -32,12 +32,12 @@ public class ChooseShowMe extends AppCompatActivity {
         btnShowMeBack = findViewById(R.id.btnShowMeBack);
         show = getIntent().getStringExtra("showMe");
 
-        if(show.equals("Man")){
+        if(show.equals("Men")){
             btnSelectMan.setChecked(true);
             chkMan.setVisibility(View.VISIBLE);
             chkWoman.setVisibility(View.INVISIBLE);
             chkEveryone.setVisibility(View.INVISIBLE);
-        } else if (show.equals("Woman")){
+        } else if (show.equals("Women")){
             btnSelectWoman.setChecked(true);
             chkMan.setVisibility(View.INVISIBLE);
             chkWoman.setVisibility(View.VISIBLE);

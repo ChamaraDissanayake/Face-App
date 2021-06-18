@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -50,29 +48,37 @@ public class FragmentProfile extends Fragment {
     public void onStart() {
         super.onStart();
         mContext = getContext();
-        Objects.requireNonNull(getView()).findViewById(R.id.btnEditProfile).setOnClickListener(new View.OnClickListener() {
+        requireView().findViewById(R.id.btnEditProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), EditProfile.class));
             }
         });
 
-        Objects.requireNonNull(getView()).findViewById(R.id.loutEditProfile).setOnClickListener(new View.OnClickListener() {
+        requireView().findViewById(R.id.loutEditProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), EditProfile.class));
             }
         });
 
-        getView().findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
+        requireView().findViewById(R.id.loutAddMedia).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), EditProfile.class));
+            }
+        });
+
+
+        requireView().findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),Settings.class));
             }
         });
-        profile_image = getView().findViewById(R.id.profile_image);
-        txtShowUniversity = getView().findViewById(R.id.txtShowUniversity);
-        txtShowName = getView().findViewById(R.id.txtShowName);
+        profile_image = requireView().findViewById(R.id.profile_image);
+        txtShowUniversity = requireView().findViewById(R.id.txtShowUniversity);
+        txtShowName = requireView().findViewById(R.id.txtShowName);
 
 //        for(MyProfile myProfile : Objects.requireNonNull(loadMyProfile(mContext))){
 ////            mSwipeView.addView(new ProfilesCard(mContext, profile, mSwipeView));
@@ -80,9 +86,14 @@ public class FragmentProfile extends Fragment {
 //        }
 //        loadMyProfile(mContext);
         Glide.with(mContext).load(Tabs.getProfileImage()).into(profile_image);
-        txtShowName.setText(Tabs.getProfileName());
+        txtShowName.setText(Tabs.getProfileName() + ", " + Tabs.getProfileAge());
         txtShowUniversity.setText(Tabs.getProfileUniversity());
-        Log.i("TEST2", "image" + Tabs.getProfileImage());
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),MyProfileView.class));
+            }
+        });
     }
 
     public static @Nullable List<MyProfile> loadMyProfile(Context context){

@@ -284,7 +284,7 @@
                     android:checked="true"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:text="Woman" />
+                    android:text="Women" />
 
                 <RadioButton
                     android:id="@+id/btnEditMan"
@@ -293,7 +293,7 @@
                     android:buttonTint="@color/red"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:text="Man" />
+                    android:text="Men" />
             </RadioGroup>
 
             <TextView

@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         showCurrentLocation = false;
-        setShowMe("Woman");
+        setShowMe("Women");
         getSettings();
         Button btnSettingsBack = findViewById(R.id.btnSettingsBack);
         sliderDistance = findViewById(R.id.sliderDistance);
@@ -234,8 +234,13 @@ public class Settings extends AppCompatActivity {
         super.onResume();
         String location;
         try {
-            location = "("+Tabs.getLatitude()+", "+Tabs.getLongitude()+")";
-        }catch (Exception e){
+            if(Tabs.getLongitude() == null){
+                location = "("+Tabs.getCurrentLatitude()+", "+Tabs.getCurrentLongitude()+")";
+            }else{
+                location = "("+Tabs.getLatitude()+", "+Tabs.getLongitude()+")";
+            }
+        }
+        catch (Exception e){
             location = "";
         }
         txtShowMe.setText(showMe);
@@ -256,12 +261,14 @@ public class Settings extends AppCompatActivity {
             imgCurrentLocation.setVisibility(View.VISIBLE);
             chkManualLocation.setVisibility(View.INVISIBLE);
             imgManualLocation.setVisibility(View.INVISIBLE);
+            txtViewLocation.setVisibility(View.INVISIBLE);
         }else {
             txtLocation.setText("Manual Location");
             chkCurrentLocation.setVisibility(View.INVISIBLE);
             imgCurrentLocation.setVisibility(View.INVISIBLE);
             chkManualLocation.setVisibility(View.VISIBLE);
             imgManualLocation.setVisibility(View.VISIBLE);
+            txtViewLocation.setVisibility(View.VISIBLE);
         }
     }
 
@@ -321,6 +328,7 @@ public class Settings extends AppCompatActivity {
 
                 try {
                     showCurrentLocation = response.getBoolean("showCurrentLocation");
+                    setShowCurrentLocation(showCurrentLocation);
                     btnShowGlobal.setChecked(response.getBoolean("showGlobal"));
                     sliderDistance.setValue(response.getInt("maxDistance"));
                     showMe = response.getString("showMe");

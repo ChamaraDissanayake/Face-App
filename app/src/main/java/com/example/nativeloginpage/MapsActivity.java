@@ -17,6 +17,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -33,12 +35,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NotNull GoogleMap googleMap) {
         mMap = googleMap;
 
         try {
-            latitude = Tabs.getLatitude();
-            longitude = Tabs.getLongitude();
+            if(!Settings.getShowCurrentLocation()){
+                latitude = Tabs.getLatitude();
+                longitude = Tabs.getLongitude();
+            }else{
+                latitude = Tabs.getCurrentLatitude();
+                longitude = Tabs.getCurrentLongitude();
+            }
+
             LatLng currentLocation = new LatLng(latitude, longitude);
             pin = mMap.addMarker(new MarkerOptions().position(currentLocation).title("Touch and hold to drag").draggable(true));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,12f));
@@ -52,16 +60,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
-            public void onMarkerDragStart(Marker marker) {
+            public void onMarkerDragStart(@NotNull Marker marker) {
 
             }
 
             @Override
-            public void onMarkerDrag(Marker marker) {
+            public void onMarkerDrag(@NotNull Marker marker) {
             }
 
             @Override
-            public void onMarkerDragEnd(Marker marker) {
+            public void onMarkerDragEnd(@NotNull Marker marker) {
                 latitude = marker.getPosition().latitude;
                 longitude = marker.getPosition().longitude;
             }

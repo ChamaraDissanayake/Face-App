@@ -85,10 +85,10 @@ public class FragmentHome extends Fragment {
 
 //        new Handler().postDelayed(() -> addData(), 5000);
 
-        mSwipeView = Objects.requireNonNull(getView()).findViewById(R.id.swipeView);
+        mSwipeView = requireView().findViewById(R.id.swipeView);
         mContext = getContext();
         int bottomMargin = dpToPx(160);
-        Point windowSize = getDisplaySize(Objects.requireNonNull(getActivity()).getWindowManager());
+        Point windowSize = getDisplaySize(requireActivity().getWindowManager());
         screenWidth = windowSize.x;
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
@@ -96,7 +96,7 @@ public class FragmentHome extends Fragment {
 //                        .setViewWidth(windowSize.x)
 //                        .setViewHeight(windowSize.y - bottomMargin)
                         .setViewGravity(Gravity.TOP)
-                        .setRelativeScale(0.01f)
+                        .setRelativeScale(0.001f)
                         .setSwipeInMsgLayoutId(R.layout.profiles_accept_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.profiles_reject_msg_view));
 
@@ -104,26 +104,27 @@ public class FragmentHome extends Fragment {
 //            mSwipeView.addView(new ProfilesCard(mContext, profile, mSwipeView));
 //        }
 
-        getView().findViewById(R.id.btnReject).setOnClickListener(v -> {
+        requireView().findViewById(R.id.btnReject).setOnClickListener(v -> {
             ProfilesCard.setViewToSwipe();
             mSwipeView.doSwipe(false);
             showFabButtons();
         });
 
-        getView().findViewById(R.id.btnAccept).setOnClickListener(v -> {
+        requireView().findViewById(R.id.btnAccept).setOnClickListener(v -> {
             ProfilesCard.setViewToSwipe();
             mSwipeView.doSwipe(true);
+//            mSwipeView.doSwipe(true);
             showFabButtons();
         });
 
-        Objects.requireNonNull(getView()).findViewById(R.id.btnProfile).setOnClickListener(v -> {
+        requireView().findViewById(R.id.btnProfile).setOnClickListener(v -> {
             Log.i("TEST", "Chat id " + Tabs.getProfileChatId());
 //            Intent intent = new Intent(getContext(), SplashActivity.class);
 //            startActivity(intent);
         });
 
-        btnBoost = getView().findViewById(R.id.btnBoost);
-        btnRewind = getView().findViewById(R.id.btnRewind);
+        btnBoost = requireView().findViewById(R.id.btnBoost);
+        btnRewind = requireView().findViewById(R.id.btnRewind);
     }
 
 //    public String getProfileData(Context context){
